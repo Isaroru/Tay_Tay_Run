@@ -69,12 +69,19 @@ function draw() {
   }
 
   function keyPressed() {
+    
     switch (pantalla) {
-      case 0:
-        if (pantalla=2) {
+      /*case 0: // aquí hay una contradicción, cómo puede estar al tiempo en la pantalla 2 y 0
+        if (pantalla==2) { // estaba igualando en lugar de validar = vs ==
           taylor.mover();
         }
-      break;
+      break;*/
+      case 0:
+        break;
+      case 2:
+        taylor.mover();
+        break;
+
   }
   //console(taylor.mover());
 }
