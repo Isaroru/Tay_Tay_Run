@@ -66,57 +66,21 @@ class LevelA{
 
     mostrar(){
         image(fondo1, 0, 0);
-        
-        /*for(let fil = 0 ; fil < 7 ; fil++){
+        /*
+        for(let fil = 0 ; fil < 7 ; fil++){
             for(let col = 0 ; col < 12 ; col++){
                 //this.mapa[fil][col] = 0;
                 if(this.mapa[fil][col] === 0){
                     fill(255);
-                }else{
+                }else if (this.mapa[fil][col] === 1){
                     fill(0);
                 }
                 rect(col*100,fil*100,100,100);
             }
-        }*/
+        }
+        */
     }
 
-    /*mover(){
-        if(keyIsPressed){
-            switch (keyCode) {
-                case LEFT_ARROW: // izquierda
-                if (this.taylor.getPjCol - 1 >= 0) {
-                    if (this.mapa[this.taylor.getPjFil][this.taylor.getPjCol - 1] === 0) {
-                    this.taylor.getPjCol -= 1;
-                    }
-                }
-                break;
-                case RIGHT_ARROW: // derecha
-                if (this.taylor.getPjCol + 1 < 12) {
-                    if (this.mapa[this.taylor.getPjFil][this.taylor.getPjCol + 1] === 0) {
-                    this.taylor.getPjCol += 1;
-                    }
-                }console.log(RIGHT_ARROW);
-                break;
-                case UP_ARROW: // arriba
-                if (this.taylor.getPjFil - 1 >= 0) {
-                    if (this.mapa[this.taylor.getPjFil - 1][this.taylor.getPjCol] === 0) {
-                    this.taylor.getPjFil -= 1;
-                    }
-                }
-                break;
-                case DOWN_ARROW: // abajo
-                if (this.taylor.getPjFil + 1 < 12) {
-                    if (this.mapa[this.taylor.getPjFil + 1][this.taylor.getPjCol] === 0) {
-                    this.taylor.getPjFil += 1;
-                    }
-                }
-                break;
-                }
-                this.taylor.getXPos = (this.taylor.getPjCol * 100) + 0;
-                this.taylor.getYPos = (this.taylor.getPjFil * 100) + 100;
-            }
-    }
-    */
    getMapReference(){
        return this.mapa;
    }

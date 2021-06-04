@@ -1,30 +1,59 @@
 class Tay{
-    constructor(mapReference,pjCol,pjFil,xPos,yPos){
+    constructor(mapReference,pjCol,pjFil,xPos,yPos,llaveX,llaveY,llaveCol,llaveFil,llaveAtrapada,cdX,cdY,cdCol,cdFil,cdAtrapado){
         this.pjCol = pjCol;
         this.pjFil = pjFil;
         this.xPos = xPos; 
         this.yPos = yPos;
         this.mapReference = mapReference;
         // posición inicial // remover despues para asignarla por nivel
-        this.pjCol = 0; // los valores se están quedando fijos, por eso no se mueve
-        this.pjFil = 0; // los valores se están quedando fijos, por eso no se mueve
-        this.xPos = (this.pjCol * 100) + 0; // los valores se están quedando fijos, por eso no se mueve
-        this.yPos = (this.pjFil * 100) + 100; // los valores se están quedando fijos, por eso no se mueve
+        this.pjCol = 0;
+        this.pjFil = 0; 
+        this.xPos = (this.pjCol * 100) + 0;
+        this.yPos = (this.pjFil * 100) + 100; 
+        //llave
+        this.llaveX = llaveX;
+        this.llaveY = llaveY;
+        this.llaveCol = llaveCol;
+        this.llaveFil = llaveFil;
+        this.llaveAtrapada = llaveAtrapada;
+        this.llaveCol = 6;
+        this.llaveFil = 2;
+        this.llaveX = (this.llaveCol * 100 + 10);
+        this.llaveY = (this.llaveFil * 100 + 10);
+        this.llaveAtrapada = false;
+        //cd
+        this.cdX = cdX;
+        this.cdY = cdY;
+        this.cdCol = cdCol;
+        this.cdFil = cdFil;
+        this.cdAtrapado = cdAtrapado;
+        this.cdCol = 0;
+        this.cdFil = 6;
+        this.cdX = (this.cdCol * 100 + 10);
+        this.cdY = (this.cdFil * 100 + 10);
+        this.cdAtrapado = false;
     }
 
     mostrar(){
-    //    this.pjCol = 0; // los valores se están quedando fijos, por eso no se mueve
-    //    this.pjFil = 0; // los valores se están quedando fijos, por eso no se mueve
-    //    this.xPos = (this.pjCol * 100) + 0; // los valores se están quedando fijos, por eso no se mueve
-    //    this.yPos = (this.pjFil * 100) + 100; // los valores se están quedando fijos, por eso no se mueve
         image(tay1, this.xPos, this.yPos);
-        image(llave,610,210,80,80);
-        image(cd,10,610,80,80);
-        
+        if (!this.llaveAtrapada) {
+            image(llave,this.llaveX,this.llaveY,80,80);
+        }
+        if (!this.cdAtrapado) {
+            image(cd,this.cdX,this.cdY,80,80);
+        }
     }
 
-    mover(){
-        //if(keyIsPressed){ // esto ya se está validando al llamar al método mover                
+    verifyItem(){
+        if(dist(this.xPos,this.yPos,this.llaveX,this.llaveY) < 50){
+            this.llaveAtrapada = true;
+        }
+        if(dist(this.xPos,this.yPos,this.cdX,this.cdY) < 50){
+            this.cdAtrapado = true;
+        }
+    }
+
+    mover(){              
         switch (keyCode) {            
             case LEFT_ARROW: // izquierda
             if (this.pjCol - 1 >= 0) {
@@ -56,8 +85,8 @@ class Tay{
             break;
             }
             this.xPos = (this.pjCol * 100) + 0;
-            this.yPos = (this.pjFil * 100) + 100;
-        //}
+            this.yPos = (this.pjFil * 100) + 0;
+            this.verifyItem();
     }
 
     getXPos(){

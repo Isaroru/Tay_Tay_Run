@@ -23,12 +23,14 @@ function preload() {
 
 let levelA;
 let taylor;
+let enemyK;
 
 function setup() {
-  createCanvas(1200, 700);
+  createCanvas(1400, 700);
   pantalla = 0;
   levelA = new LevelA();
   taylor = new Tay(levelA.getMapReference());
+  enemyK = new Kanye(levelA.getMapReference());
 }
 
 function draw() {
@@ -46,22 +48,42 @@ function draw() {
       // nivel 1
       levelA.mostrar();
       taylor.mostrar();
-      //levelA.setObstaculos();
+      enemyK.mostrar();
+      enemyK.mover();
+      verifyEnemy();
     break;
   }
 }
+  function verifyEnemy() {
+    if (dist(taylor.getXPos(), taylor.getYPos(), enemyK.getKPosX(), enemyK.getKPosY()) < 100) {
+      taylor.llaveAtrapada = false;
+      taylor.llaveCol = 6;
+      taylor.llaveFil = 2;
+      taylor.llaveX = (taylor.llaveCol * 100) + 10;
+      taylor.llaveY = (taylor.llaveFil * 100) + 10;
+      taylor.cdAtrapado = false;
+      taylor.cdCol = 0;
+      taylor.cdFil = 6;
+      taylor.cdX = (taylor.cdCol * 100) + 10;
+      taylor.cdY = (taylor.cdFil * 100) + 10;
+      taylor.pjCol = 0;
+      taylor.pjFil = 0;
+      taylor.xPos = (taylor.pjCol * 100);
+      taylor.yPos = (taylor.pjFil * 100) + 100;
+    }
+  }
 
   function mousePressed() {
     //seguir a instrucciones
     switch (pantalla) {
       case 0:
-        if (dist(mouseX, mouseY, 1004, 614) < 100) {
+        if (dist(mouseX, mouseY, 1203, 610) < 100) {
           pantalla = 1;
         }
       break;
       // empezar nivel 1
       case 1:
-        if (dist(mouseX, mouseY, 1004, 614) < 100) {
+        if (dist(mouseX, mouseY, 1257, 635) < 50) {
           pantalla = 2;
         }
       break;
@@ -71,55 +93,15 @@ function draw() {
   function keyPressed() {
     
     switch (pantalla) {
-      /*case 0: // aquí hay una contradicción, cómo puede estar al tiempo en la pantalla 2 y 0
-        if (pantalla==2) { // estaba igualando en lugar de validar = vs ==
-          taylor.mover();
-        }
-      break;*/
       case 0:
         break;
+      //nivel 1
       case 2:
         taylor.mover();
         break;
 
   }
-  //console(taylor.mover());
 }
   
-  /*function keyIsPressed() {
-    switch (keyCode) {
-            case LEFT_ARROW: // izquierda
-            if (taylor.getPjCol() - 1 >= 0) {
-                if (this.mapReference[this.pjFil][this.pjCol - 1] === 0) {
-                this.pjCol -= 1;
-                }
-            }
-            break;
-            case RIGHT_ARROW: // derecha
-            if (this.pjCol + 1 < 12) {
-                if (this.mapReference[this.pjFil][this.pjCol + 1] === 0) {
-                this.pjCol += 1;
-                }
-            }
-            break;
-            case UP_ARROW: // arriba
-            if (this.pjFil - 1 >= 0) {
-                if (this.mapReference[this.pjFil - 1][this.pjCol] === 0) {
-                this.pjFil -= 1;
-                }
-            }
-            break;
-            case DOWN_ARROW: // abajo
-            if (this.pjFil + 1 < 7) {
-                if (this.mapReference[this.pjFil + 1][this.pjCol] === 0) {
-                this.pjFil += 1;
-                }
-            }
-            break;
-            }
-            this.xPos = (this.pjCol * 100) + 0;
-            this.yPos = (this.pjFil * 100) + 100;
-  }*/
-
 
 
