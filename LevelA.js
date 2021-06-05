@@ -1,12 +1,6 @@
 class LevelA{
-    //[0][0][0][0]
-    //[0][1][0][0]   
-    //[0][0][1][0]
-    //[0][0][0][0]
-    
     constructor(){
-        this.mapa = [];  
-        this.taylor = new Tay();
+        this.mapa = [];
         for(let i = 0 ; i < 7 ; i++){
             this.mapa.push(new Array(12));
         }
@@ -16,7 +10,6 @@ class LevelA{
                 this.mapa[fil][col] = 0;
             }
         }
-        console.log(this.mapa);
         this.setObstaculos();
     }
     // [fila][col] --> y, x
@@ -66,6 +59,7 @@ class LevelA{
 
     mostrar(){
         image(fondo1, 0, 0);
+        image(barra1, 1200, 0);
         /*
         for(let fil = 0 ; fil < 7 ; fil++){
             for(let col = 0 ; col < 12 ; col++){
