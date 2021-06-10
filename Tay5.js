@@ -21,6 +21,7 @@ class Tay5{
         this.llaveX = (this.llaveCol * 100 + 10);
         this.llaveY = (this.llaveFil * 100 + 10);
         this.llaveAtrapada = false;
+        this.llaveAparecida = true;
         //cd
         this.cdX = cdX;
         this.cdY = cdY;
@@ -32,6 +33,7 @@ class Tay5{
         this.cdX = (this.cdCol * 100 + 10);
         this.cdY = (this.cdFil * 100 + 10);
         this.cdAtrapado = false;
+        this.cdAparecido = true;
     }
 
     mostrar(){
@@ -39,17 +41,25 @@ class Tay5{
         if (!this.llaveAtrapada) {
             image(llave,this.llaveX,this.llaveY,80,80);
         }
+        if(!this.llaveAparecida) {
+            image(llave,1250,260,100,100);
+        }
         if (!this.cdAtrapado) {
             image(cd,this.cdX,this.cdY,80,80);
+        }
+        if(!this.cdAparecido) {
+            image(cd,1250,430,100,100);
         }
     }
 
     verifyItem(){
         if(dist(this.xPos,this.yPos,this.llaveX,this.llaveY) < 50){
             this.llaveAtrapada = true;
+            this.llaveAparecida = false;
         }
         if(dist(this.xPos,this.yPos,this.cdX,this.cdY) < 50){
             this.cdAtrapado = true;
+            this.cdAparecido = false;
         }
     }
 
