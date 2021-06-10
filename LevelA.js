@@ -11,6 +11,8 @@ class LevelA{
             }
         }
         this.setObstaculos();
+
+        this.time = 120;
     }
     // [fila][col] --> y, x
     setObstaculos(){
@@ -60,6 +62,9 @@ class LevelA{
     mostrar(){
         image(fondo1, 0, 0);
         image(barra1, 1200, 0);
+
+
+    
         /*
         for(let fil = 0 ; fil < 7 ; fil++){
             for(let col = 0 ; col < 12 ; col++){

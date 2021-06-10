@@ -21,6 +21,7 @@ class Tay4{
         this.llaveX = (this.llaveCol * 100 + 10);
         this.llaveY = (this.llaveFil * 100 + 10);
         this.llaveAtrapada = false;
+        this.llaveAparecida = true;
         //pajaro
         this.pajaroX = pajaroX;
         this.pajaroY = pajaroY;
@@ -32,6 +33,7 @@ class Tay4{
         this.pajaroX = (this.pajaroCol * 100 + 10);
         this.pajaroY = (this.pajaroFil * 100 + 10);
         this.pajaroAtrapado = false;
+        this.pajaroAparecido = true;
     }
 
     mostrar(){
@@ -39,17 +41,25 @@ class Tay4{
         if (!this.llaveAtrapada) {
             image(llave,this.llaveX,this.llaveY,80,80);
         }
+        if(!this.llaveAparecida) {
+            image(llave,1250,260,100,100);
+        }
         if (!this.pajaroAtrapado) {
             image(pajaro,this.pajaroX,this.pajaroY,80,80);
+        }
+        if(!this.pajaroAparecido) {
+            image(pajaro,1250,430,100,100);
         }
     }
 
     verifyItem(){
         if(dist(this.xPos,this.yPos,this.llaveX,this.llaveY) < 50){
             this.llaveAtrapada = true;
+            this.llaveAparecida = false;
         }
         if(dist(this.xPos,this.yPos,this.pajaroX,this.pajaroY) < 50){
             this.pajaroAtrapado = true;
+            this.pajaroAparecido = false;
         }
     }
 
