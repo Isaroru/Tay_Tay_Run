@@ -22,10 +22,30 @@ let taylor2;
 let enemyH;
 //nivel 3
 let tay3;
+let gato;
+let katy;
+let fondo3;
+let inst3;
+let levelC;
+let taylor3;
+let enemyKp;
 //nivel 4
 let tay4;
+let pajaro;
+let kim;
+let fondo4;
+let inst4;
+let levelD;
+let taylor4;
+let enemyKk;
 //nivel 5
 let tay5;
+let scooter;
+let fondo5;
+let inst5;
+let levelE;
+let taylor5;
+let enemyS;
 
 let pantalla;
 
@@ -45,18 +65,44 @@ function preload() {
   inst2 = loadImage('recursos/inst2.png');
   avion = loadImage('recursos/avion.png');
   barra2 = loadImage('recursos/barra2.png');
+
+  tay3 = loadImage('recursos/tay3.png');
+  katy = loadImage('recursos/katy.png');
+  fondo3 = loadImage('recursos/fondo3.png');
+  inst3 = loadImage('recursos/inst3.png');
+  gato = loadImage('recursos/gato.png');
+
+  tay4 = loadImage('recursos/tay4.png');
+  kim = loadImage('recursos/kim.png');
+  fondo4 = loadImage('recursos/fondo4.png');
+  inst4 = loadImage('recursos/inst4.png');
+  pajaro = loadImage('recursos/pajaro.png');
+
+  tay5 = loadImage('recursos/tay5.png');
+  scooter = loadImage('recursos/scooter.png');
+  fondo5 = loadImage('recursos/fondo5.png');
+  inst5 = loadImage('recursos/inst5.png');
 }
 
 
 function setup() {
   createCanvas(1400, 700);
-  pantalla = 4;
+  pantalla = 9;
   levelA = new LevelA();
   taylor = new Tay(levelA.getMapReference());
   enemyK = new Kanye(levelA.getMapReference());
   levelB = new LevelB();
   taylor2 = new Tay2(levelB.getMapReference2());
   enemyH = new Harry(levelB.getMapReference2());
+  levelC = new LevelC();
+  taylor3 = new Tay3(levelC.getMapReference3());
+  enemyKp = new Katy(levelC.getMapReference3());
+  levelD = new LevelD();
+  taylor4 = new Tay4(levelD.getMapReference4());
+  enemyKk = new Kim(levelD.getMapReference4());
+  levelE = new LevelE();
+  taylor5 = new Tay5(levelE.getMapReference5());
+  enemyS = new Scooter(levelE.getMapReference5());
 }
 
 function draw() {
@@ -88,6 +134,48 @@ function draw() {
       taylor2.mostrar();
       enemyH.mostrar();
       enemyH.mover();
+      enemyH.mover2();
+      enemyH.mover3();
+      verifyEnemy();
+		break;
+    case 5:
+			// instrucciones 3
+      image(inst3, 0, 0);
+		break;
+    case 6:
+			// nivel 3
+      levelC.mostrar();
+      taylor3.mostrar();
+      enemyKp.mostrar();
+      enemyKp.mover();
+      enemyKp.mover2();
+      //enemyKp.mover3();
+      verifyEnemy();
+		break;
+    case 7:
+			// instrucciones 4
+      image(inst4, 0, 0);
+		break;
+    case 8:
+			// nivel 4
+      levelD.mostrar();
+      taylor4.mostrar();
+      enemyKk.mostrar();
+      enemyKk.mover();
+      //enemyKp.mover3();
+      verifyEnemy();
+		break;
+    case 9:
+			// instrucciones 5
+      image(inst5, 0, 0);
+		break;
+    case 10:
+			// nivel 5
+      levelE.mostrar();
+      taylor5.mostrar();
+      enemyS.mostrar();
+      enemyS.mover();
+      //enemyKp.mover3();
       verifyEnemy();
 		break;
   }
@@ -131,7 +219,6 @@ function draw() {
       }
       break;
       case 4:
-        //if (dist(taylor2.getXPos(), taylor2.getYPos(), enemyH.getHPosX() || enemyH.getHPosX2() || enemyH.getHPosX3(), enemyH.getHPosY() || enemyH.getHPosY2() || enemyH.getHPosY3()) < 100) {
       if (dist(taylor2.getXPos(), taylor2.getYPos(), enemyH.getHPosX(), enemyH.getHPosY()) < 100){
         taylor2.llaveAtrapada = false;
         taylor2.llaveCol = 11;
@@ -181,6 +268,40 @@ function draw() {
         taylor2.yPos = (taylor2.pjFil * 100);
       }
       break;
+      case 6:
+      if (dist(taylor3.getXPos(), taylor3.getYPos(), enemyKp.getKPosX(), enemyKp.getKPosY()) < 100){
+        taylor3.llaveAtrapada = false;
+        taylor3.llaveCol = 7;
+        taylor3.llaveFil = 2;
+        taylor3.llaveX = (taylor3.llaveCol * 100);
+        taylor3.llaveY = (taylor3.llaveFil * 100);
+        taylor3.gatoAtrapado = false;
+        taylor3.gatoCol = 11;
+        taylor3.gatoFil = 3;
+        taylor3.gatoX = (taylor3.gatoCol * 100);
+        taylor3.gatoY = (taylor3.gatoFil * 100);
+        taylor3.pjCol = 0;
+        taylor3.pjFil = 1;
+        taylor3.xPos = (taylor2.pjCol * 100);
+        taylor3.yPos = (taylor2.pjFil * 100);
+      }
+      if (dist(taylor3.getXPos(), taylor3.getYPos(), enemyKp.getKPosX2(), enemyKp.getKPosY2()) < 100){
+        taylor3.llaveAtrapada = false;
+        taylor3.llaveCol = 7;
+        taylor3.llaveFil = 2;
+        taylor3.llaveX = (taylor3.llaveCol * 100);
+        taylor3.llaveY = (taylor3.llaveFil * 100);
+        taylor3.gatoAtrapado = false;
+        taylor3.gatoCol = 11;
+        taylor3.gatoFil = 3;
+        taylor3.gatoX = (taylor3.gatoCol * 100);
+        taylor3.gatoY = (taylor3.gatoFil * 100);
+        taylor3.pjCol = 0;
+        taylor3.pjFil = 1;
+        taylor3.xPos = (taylor2.pjCol * 100);
+        taylor3.yPos = (taylor2.pjFil * 100);
+      }
+      break;
       
     
   }
@@ -206,6 +327,22 @@ function draw() {
           pantalla = 4;
         }
       break;
+      //empezar nivel 3
+      case 5:
+        if (dist(mouseX, mouseY, 1257, 635) < 50) {
+          pantalla = 6;
+        }
+      break;
+      case 7:
+        if (dist(mouseX, mouseY, 1257, 635) < 50) {
+          pantalla = 8;
+        }
+      break;
+      case 9:
+        if (dist(mouseX, mouseY, 1257, 635) < 50) {
+          pantalla = 10;
+        }
+      break;
     }
   }
 
@@ -221,6 +358,16 @@ function draw() {
       //nivel 2
       case 4:
         taylor2.mover();
+        break;
+        //nivel 3
+      case 6:
+        taylor3.mover();
+        break;
+      case 8:
+        taylor4.mover();
+        break;
+      case 10:
+        taylor5.mover();
         break;
 
   }

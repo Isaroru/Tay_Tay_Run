@@ -1,5 +1,5 @@
-class Kanye{
-    constructor(mapReference,kCol,kFil,kPosX,kPosY,kDir, moving,kCol2,kFil2,kPosX2,kPosY2,kDir2, moving2){
+class Scooter{
+    constructor(mapReference,kCol,kFil,kPosX,kPosY,kDir, moving,kCol2,kFil2,kPosX2,kPosY2,kDir2,kCol3,kFil3,kPosX3,kPosY3,kDir3){
         this.kCol = kCol;
         this.kFil = kFil;
         this.kPosX = kPosX; 
@@ -13,36 +13,31 @@ class Kanye{
         this.kPosX2 = kPosX2; 
         this.kPosY2 = kPosY2;
         this.kDir2 = kDir2;
-        this.moving2 = moving2;
 
-        this.kCol = 11;
-        this.kFil = 3;
+        this.kCol3 = kCol3;
+        this.kFil3 = kFil3;
+        this.kPosX3 = kPosX3; 
+        this.kPosY3 = kPosY3;
+        this.kDir3 = kDir3;
+
+        this.kCol = 5;
+        this.kFil = 4;
         this.kPosX = (this.kCol * 100); 
         this.kPosY = (this.kFil * 100);
         this.kDir = 0;
         this.moving = false;
-
-        this.kCol2 = 2;
-        this.kFil2 = 5;
-        this.kPosX2 = (this.kCol2 * 100); 
-        this.kPosY2 = (this.kFil2 * 100);
-        this.kDir2 = 3;
-        this.moving2 = false;
     }
 
     mostrar(){
-        image(kanye, this.kPosX, this.kPosY);
-        image(kanye, this.kPosX2, this.kPosY2);
+        image(scooter, this.kPosX, this.kPosY);
     }
     
     mover() {
         if (frameCount % 20 == 0) {
             this.moveEnemy(this.mapReference);
         }
-        if (frameCount % 30 == 0) {
-            this.moveEnemy(this.mapReference);
-        }
     }
+
     
 
     moveEnemy() {
@@ -64,38 +59,30 @@ class Kanye{
                 }
                 break;
             case 2: // arriba
-                if (this.kCol2 - 1 >= 0) {
-                    if (this.mapReference[this.kFil2 - 1][this.kCol2] === 0) {
-                        this.kFil2 -= 1;
-                        this.moving2 = true;
+                if (this.kFil - 1 >= 0) {
+                    if (this.mapReference[this.kFil - 1][this.kCol] === 0) {
+                        this.kFil -= 1;
+                        this.moving = true;
                     }
                 }
                 break;
             case 3: // abajo
-                if (this.kCol2 + 1 < 6) {
-                    if (this.mapReference[this.kFil2 + 1][this.kCol2] === 0) {
-                        this.kFil2 += 1;
-                        this.moving2 = true;
+                if (this.kFil + 1 < 7) {
+                    if (this.mapReference[this.kFil + 1][this.kCol] === 0) {
+                        this.kFil += 1;
+                        this.moving = true;
                     }
                 }
                 break;
         }
-        if(this.kPosX <= 0){
-            this.kDir = 1;
-        }else if(this.kPosX >= 1100){
-            this.kDir = 0;
-        }
-        if(this.kPosY2 <= 500){
-            this.kDir2 = 3;
-        }else if(this.kPosY2 >= 600){
-            this.kDir2 = 2;
+        if (!this.moving){
+            this.kDir = int(random(0,4));
         }
         this.kPosX = (this.kCol * 100);
         this.kPosY = (this.kFil * 100);
-        this.kPosX2 = (this.kCol2 * 100);
-        this.kPosY2 = (this.kFil2 * 100);
     }
 
+    
     getKPosX(){
         return this.kPosX;
     }

@@ -29,11 +29,13 @@ class Harry{
         this.hFil2 = 2;
         this.hPosX2 = (this.hCol2 * 100); 
         this.hPosY2 = (this.hFil2 * 100);
+        this.hDir2 = 0;
 
-        this.hCol3 = 4;
+        this.hCol3 = 3;
         this.hFil3 = 2;
         this.hPosX3 = (this.hCol3 * 100); 
         this.hPosY3 = (this.hFil3 * 100);
+        this.hDir3 = 1;
     }
 
     mostrar(){
@@ -46,67 +48,101 @@ class Harry{
         if (frameCount % 20 == 0) {
             this.moveEnemy(this.mapReference2);
         }
-        /*if (frameCount % 30 == 0) {
-            this.moveEnemy2(this.mapReference);
-        }*/
+    }
+    mover2(){
+        if (frameCount % 20 == 0) {
+            this.moveEnemy2(this.mapReference2);
+        }
+    }
+    mover3(){
+        if (frameCount % 20 == 0) {
+            this.moveEnemy3(this.mapReference2);
+        }
     }
     
 
     moveEnemy() {
         switch (this.hDir) {
             case 0: // izquierda
-                if (this.hCol3 - 1 >= 0) {
-                    if (this.mapReference2[this.hFil3][this.hCol3 - 1] === 0) {
-                        this.hCol3 -= 1;
+                if (this.hCol - 1 >= 0) {
+                    if (this.mapReference2[this.hFil][this.hCol - 1] === 0) {
+                        this.hCol -= 1;
                         this.moving = true;
                     }
                 }
                 break;
             case 1: // derecha
-                if (this.hCol3 + 1 < 12) {
-                    if (this.mapReference2[this.hFil3][this.hCol3 + 1] === 0) {
-                        this.hCol3 += 1;
+                if (this.hCol + 1 < 12) {
+                    if (this.mapReference2[this.hFil][this.hCol + 1] === 0) {
+                        this.hCol += 1;
                         this.moving = true;
                     }
                 }
                 break;
         }
-        if(this.hPosX3 <= 300){
+        if(this.hPosX <= 0){
             this.hDir = 1;
-        }else if(this.hPosX3 >= 1100){
+        }else if(this.hPosX >= 400){
             this.hDir = 0;
         }
-        this.hPosX3 = (this.hCol3 * 100); // pixeles
-        this.hPosY3 = (this.hFil3 * 100); // pixeles
+        this.hPosX = (this.hCol * 100); // pixeles
+        this.hPosY = (this.hFil * 100); // pixeles
+    }
+    moveEnemy2() {
+        switch (this.hDir2) {
+            case 0: // izquierda
+                if (this.hCol2 - 1 >= 0) {
+                    if (this.mapReference2[this.hFil2][this.hCol2 - 1] === 0) {
+                        this.hCol2 -= 1;
+                        this.moving = true;
+                    }
+                }
+                break;
+            case 1: // derecha
+                if (this.hCol2 + 1 < 12) {
+                    if (this.mapReference2[this.hFil2][this.hCol2 + 1] === 0) {
+                        this.hCol2 += 1;
+                        this.moving = true;
+                    }
+                }
+                break;
+        }
+        if(this.hPosX2 <= 300){
+            this.hDir2 = 1;
+        }else if(this.hPosX2 >= 1100){
+            this.hDir2 = 0;
+        }
+        this.hPosX2 = (this.hCol2 * 100);
+        this.hPosY2 = (this.hFil2 * 100);
     }
 
-    /*moveEnemy2() {
-        switch (this.kDir2) {
+    moveEnemy3() {
+        switch (this.hDir3) {
             case 0: // arriba
-                if (this.kCol2 - 1 >= 4) {
-                    if (this.mapReference[this.kFil2 - 1][this.kCol2] === 0) {
-                        this.kFil2 -= 1;
-                        this.moving2 = true;
+                if (this.hCol3 - 1 >= 0) {
+                    if (this.mapReference2[this.hFil3 - 1][this.hCol3] === 0) {
+                        this.hFil3 -= 1;
+                        this.moving = true;
                     }
                 }
                 break;
             case 1: // abajo
-                if (this.kCol2 + 1 < 6) {
-                    if (this.mapReference[this.kFil2 + 1][this.kCol2] === 0) {
-                        this.kFil2 += 1;
-                        this.moving2 = true;
+                if (this.hCol3 + 1 < 7) {
+                    if (this.mapReference2[this.hFil3 + 1][this.hCol3] === 0) {
+                        this.hFil3 += 1;
+                        this.moving = true;
                     }
                 }
                 break;
         }
-        if(this.kPosY2 <= 500){
-            this.kDir2 = 1;
-        }else if(this.kPosY2 >= 600){
-            this.kDir2 = 0;
+        if(this.hPosY3 <= 300){
+            this.hDir3 = 1;
+        }else if(this.hPosY3 >= 500){
+            this.hDir3 = 0;
         }
-        this.kPosX2 = (this.kCol2 * 100); // pixeles
-        this.kPosY2 = (this.kFil2 * 100); // pixeles
-    }*/
+        this.hPosX3 = (this.hCol3 * 100);
+        this.hPosY3 = (this.hFil3 * 100); 
+    }
     getHPosX(){
         return this.hPosX;
     }
