@@ -50,6 +50,19 @@ let enemyS;
 //tiempo
 let time;
 
+//ganaste y perdiste
+let ganaste;
+let perdiste;
+
+let vida;
+
+let lives;
+
+//booleano para las immg de los corazones
+let cor1 = false;
+let cor2 = false;
+let cor3 = false;
+
 let pantalla;
 
 function preload() {
@@ -86,13 +99,19 @@ function preload() {
   fondo5 = loadImage('recursos/fondo5.png');
   inst5 = loadImage('recursos/inst5.png');
 
+  ganaste = loadImage('recursos/YOU WON.png');
+  perdiste = loadImage('recursos/GAME OVER.png');
+
+  vidas = loadImage('recursos/Corazón.png');
+
   time = 120;
+  lives = 3;
 }
 
 
 function setup() {
   createCanvas(1400, 700);
-  pantalla = 4;
+  pantalla = 2;
   levelA = new LevelA();
   taylor = new Tay(levelA.getMapReference());
   enemyK = new Kanye(levelA.getMapReference());
@@ -108,6 +127,7 @@ function setup() {
   levelE = new LevelE();
   taylor5 = new Tay5(levelE.getMapReference5());
   enemyS = new Scooter(levelE.getMapReference5());
+  
 }
 
 function draw() {
@@ -129,6 +149,9 @@ function draw() {
       enemyK.mover();
       verifyEnemy();
       tiempo();
+      corazones();
+  
+      
     break;
     case 3:
 			// instrucciones 2
@@ -144,6 +167,7 @@ function draw() {
       enemyH.mover3();
       verifyEnemy();
       tiempo();
+      corazones();
 		break;
     case 5:
 			// instrucciones 3
@@ -188,6 +212,12 @@ function draw() {
       verifyEnemy();
       tiempo();
 		break;
+    case 11:
+      image(perdiste,0,0);
+    break;
+    case 12:
+      image(ganaste,0,0);
+    break;
   }
 }
   function verifyEnemy() {
@@ -212,6 +242,13 @@ function draw() {
         taylor.pjFil = 0;
         taylor.xPos = (taylor.pjCol * 100);
         taylor.yPos = (taylor.pjFil * 100) + 100;
+
+        //contador de vidas
+        lives -= 1;
+        console.log(lives);
+          if(lives == 0){
+            pantalla = 11;
+          }
       }
       if (dist(taylor.getXPos(), taylor.getYPos(), enemyK.getKPosX2(), enemyK.getKPosY2()) < 100) {
         taylor.llaveAtrapada = false;
@@ -331,6 +368,25 @@ function draw() {
   }
   }
 
+  xCorazones = 1000;
+  yCorazones = 10;
+
+  function corazones() {
+    if(!cor1 && lives == 3){
+      image(vidas,xCorazones + 100,yCorazones,50,50);
+    }
+
+    if(!cor2 && lives == 3 || lives == 2){
+      image(vidas,xCorazones + 50,yCorazones,50,50);
+
+    }
+
+    if(!cor3 && lives == 3 || lives == 2 || lives == 1){
+      image(vidas,xCorazones,yCorazones,50,50);
+    }
+    
+   
+  }
   function tiempo() {
 
         fill(255);
@@ -338,14 +394,14 @@ function draw() {
         textSize(70);
         text(time,1300,630);
 
-       if(frameCount % 60 == 0 && time > 0){
+       if(frameCount % 60 == 0 && time >= 0){
       time --;
         }
         if(time == 0){
-          text("Game over",width/2,height/2);
+          pantalla = 11;
     }
   }
-
+      
 
   function mousePressed() {
     //seguir a instrucciones
@@ -381,6 +437,11 @@ function draw() {
       case 9:
         if (dist(mouseX, mouseY, 1257, 635) < 50) {
           pantalla = 10;
+        }
+      break;
+      case 11:
+        if (dist(mouseX, mouseY, 1257, 635) < 50) {
+          pantalla = 0;
         }
       break;
     }
