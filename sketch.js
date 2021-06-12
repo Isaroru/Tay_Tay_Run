@@ -10,6 +10,7 @@ let inst1;
 let levelA;
 let enemyK;
 let taylor;
+
 //nivel 2
 let tay2;
 let avion;
@@ -47,6 +48,10 @@ let levelE;
 let taylor5;
 let enemyS;
 
+//puerta niveles
+let puerta;
+let puerta2;
+
 //tiempo
 let time;
 
@@ -74,6 +79,8 @@ function preload() {
   llave = loadImage('recursos/llave.png');
   cd = loadImage('recursos/cd.png');
   barra1 = loadImage('recursos/barra1.png');
+  puerta = loadImage('recursos/Puerta.png');
+  puerta2 = loadImage('recursos/Puerta2.png');
 
   tay2 = loadImage('recursos/tay2.png');
   harry = loadImage('recursos/harry.png');
@@ -111,7 +118,7 @@ function preload() {
 
 function setup() {
   createCanvas(1400, 700);
-  pantalla = 2;
+  pantalla = 4;
   levelA = new LevelA();
   taylor = new Tay(levelA.getMapReference());
   enemyK = new Kanye(levelA.getMapReference());
@@ -231,6 +238,7 @@ function draw() {
         if (dist(taylor.getXPos(), taylor.getYPos(), enemyK.getKPosX(), enemyK.getKPosY()) < 100) {
         taylor.llaveAtrapada = false;
         taylor.llaveAparecida = true;
+        taylor.puertaAparecido = false;
         taylor.llaveCol = 6;
         taylor.llaveFil = 2;
         taylor.llaveX = (taylor.llaveCol * 100) + 10;
@@ -256,6 +264,7 @@ function draw() {
       if (dist(taylor.getXPos(), taylor.getYPos(), enemyK.getKPosX2(), enemyK.getKPosY2()) < 100) {
         taylor.llaveAtrapada = false;
         taylor.llaveAparecida = true;
+        taylor.puertaAparecido = false;
         taylor.llaveCol = 6;
         taylor.llaveFil = 2;
         taylor.llaveX = (taylor.llaveCol * 100) + 10;
@@ -283,6 +292,7 @@ function draw() {
       if (dist(taylor2.getXPos(), taylor2.getYPos(), enemyH.getHPosX(), enemyH.getHPosY()) < 100){
         taylor2.llaveAtrapada = false;
         taylor2.llaveAparecida = true;
+        taylor2.puerta2Aparecido = false;
         taylor2.llaveCol = 11;
         taylor2.llaveFil = 1;
         taylor2.llaveX = (taylor2.llaveCol * 100);
@@ -308,6 +318,7 @@ function draw() {
       if (dist(taylor2.getXPos(), taylor2.getYPos(), enemyH.getHPosX2(), enemyH.getHPosY2()) < 100){
         taylor2.llaveAtrapada = false;
         taylor2.llaveAparecida = true;
+        taylor2.puerta2Aparecido = false;
         taylor2.llaveCol = 11;
         taylor2.llaveFil = 1;
         taylor2.llaveX = (taylor2.llaveCol * 100);
@@ -333,6 +344,7 @@ function draw() {
       if (dist(taylor2.getXPos(), taylor2.getYPos(), enemyH.getHPosX3(), enemyH.getHPosY3()) < 100){
         taylor2.llaveAtrapada = false;
         taylor2.llaveAparecida = true;
+        taylor2.puerta2Aparecido = false;
         taylor2.llaveCol = 11;
         taylor2.llaveFil = 1;
         taylor2.llaveX = (taylor2.llaveCol * 100);
@@ -360,6 +372,7 @@ function draw() {
       if (dist(taylor3.getXPos(), taylor3.getYPos(), enemyKp.getKPosX(), enemyKp.getKPosY()) < 100){
         taylor3.llaveAtrapada = false;
         taylor3.llaveAparecida = true;
+        taylor3.puerta2Aparecido = false;
         taylor3.llaveCol = 7;
         taylor3.llaveFil = 2;
         taylor3.llaveX = (taylor3.llaveCol * 100);
@@ -385,6 +398,7 @@ function draw() {
       if (dist(taylor3.getXPos(), taylor3.getYPos(), enemyKp.getKPosX2(), enemyKp.getKPosY2()) < 100){
         taylor3.llaveAtrapada = false;
         taylor3.llaveAparecida = true;
+        taylor3.puerta2Aparecido = false;
         taylor3.llaveCol = 7;
         taylor3.llaveFil = 2;
         taylor3.llaveX = (taylor3.llaveCol * 100);

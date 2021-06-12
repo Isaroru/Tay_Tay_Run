@@ -62,6 +62,7 @@ class LevelA{
     mostrar(){
         image(fondo1, 0, 0);
         image(barra1, 1200, 0);
+    
 
 
     

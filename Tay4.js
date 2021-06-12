@@ -34,6 +34,8 @@ class Tay4{
         this.pajaroY = (this.pajaroFil * 100 + 10);
         this.pajaroAtrapado = false;
         this.pajaroAparecido = true;
+
+        this.puerta2Aparecido = false;
     }
 
     mostrar(){
@@ -50,12 +52,16 @@ class Tay4{
         if(!this.pajaroAparecido) {
             image(pajaro,1250,430,100,100);
         }
+        if(!this.puerta2Aparecido) {
+            image(puerta2,594.937,602.301);
+        }
     }
 
     verifyItem(){
         if(dist(this.xPos,this.yPos,this.llaveX,this.llaveY) < 50){
             this.llaveAtrapada = true;
             this.llaveAparecida = false;
+            this.puerta2Aparecido = true;
         }
         if(dist(this.xPos,this.yPos,this.pajaroX,this.pajaroY) < 50){
             this.pajaroAtrapado = true;

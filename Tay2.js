@@ -34,6 +34,8 @@ class Tay2{
         this.avionY = (this.avionFil * 100 + 10);
         this.avionAtrapado = false;
         this.avionAparecido = true;
+
+        this.puerta2Aparecido = false;
     }
 
     mostrar(){
@@ -50,12 +52,16 @@ class Tay2{
         if(!this.avionAparecido) {
             image(avion,1250,430,100,100);
         }
+        if(!this.puerta2Aparecido) {
+            image(puerta2,492.756,602.301);
+        }
     }
 
     verifyItem(){
         if(dist(this.xPos,this.yPos,this.llaveX,this.llaveY) < 50){
             this.llaveAtrapada = true;
             this.llaveAparecida = false;
+            this.puerta2Aparecido = true;
         }
         if(dist(this.xPos,this.yPos,this.avionX,this.avionY) < 50){
             this.avionAtrapado = true;

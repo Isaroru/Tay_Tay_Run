@@ -34,6 +34,8 @@ class Tay3{
         this.gatoY = (this.gatoFil * 100 + 10);
         this.gatoAtrapado = false;
         this.gatoAparecido = true;
+
+        this.puerta2Aparecido = false;
     }
 
     mostrar(){
@@ -50,12 +52,16 @@ class Tay3{
         if(!this.gatoAparecido) {
             image(gato,1250,430,100,100);
         }
+        if(!this.puerta2Aparecido) {
+            image(puerta2,699.252,602.301);
+        }
     }
 
     verifyItem(){
         if(dist(this.xPos,this.yPos,this.llaveX,this.llaveY) < 50){
             this.llaveAtrapada = true;
             this.llaveAparecida = false;
+            this.puerta2Aparecido = true;
         }
         if(dist(this.xPos,this.yPos,this.gatoX,this.gatoY) < 50){
             this.gatoAtrapado = true;
