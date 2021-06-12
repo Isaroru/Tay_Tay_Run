@@ -10,6 +10,7 @@ let inst1;
 let levelA;
 let enemyK;
 let taylor;
+
 //nivel 2
 let tay2;
 let avion;
@@ -47,8 +48,25 @@ let levelE;
 let taylor5;
 let enemyS;
 
+//puerta niveles
+let puerta;
+let puerta2;
+
 //tiempo
 let time;
+
+//ganaste y perdiste
+let ganaste;
+let perdiste;
+
+let vida;
+
+let lives;
+
+//booleano para las immg de los corazones
+let cor1 = false;
+let cor2 = false;
+let cor3 = false;
 
 let pantalla;
 
@@ -61,6 +79,8 @@ function preload() {
   llave = loadImage('recursos/llave.png');
   cd = loadImage('recursos/cd.png');
   barra1 = loadImage('recursos/barra1.png');
+  puerta = loadImage('recursos/Puerta.png');
+  puerta2 = loadImage('recursos/Puerta2.png');
 
   tay2 = loadImage('recursos/tay2.png');
   harry = loadImage('recursos/harry.png');
@@ -86,7 +106,13 @@ function preload() {
   fondo5 = loadImage('recursos/fondo5.png');
   inst5 = loadImage('recursos/inst5.png');
 
+  ganaste = loadImage('recursos/YOU WON.png');
+  perdiste = loadImage('recursos/GAME OVER.png');
+
+  vidas = loadImage('recursos/Corazón.png');
+
   time = 120;
+  lives = 3;
 }
 
 
@@ -108,6 +134,7 @@ function setup() {
   levelE = new LevelE();
   taylor5 = new Tay5(levelE.getMapReference5());
   enemyS = new Scooter(levelE.getMapReference5());
+  
 }
 
 function draw() {
@@ -129,6 +156,9 @@ function draw() {
       enemyK.mover();
       verifyEnemy();
       tiempo();
+      corazones();
+  
+      
     break;
     case 3:
 			// instrucciones 2
@@ -144,6 +174,7 @@ function draw() {
       enemyH.mover3();
       verifyEnemy();
       tiempo();
+      corazones();
 		break;
     case 5:
 			// instrucciones 3
@@ -159,6 +190,7 @@ function draw() {
       //enemyKp.mover3();
       verifyEnemy();
       tiempo();
+      corazones();
 		break;
     case 7:
 			// instrucciones 4
@@ -173,6 +205,7 @@ function draw() {
       //enemyKp.mover3();
       verifyEnemy();
       tiempo();
+      corazones();
 		break;
     case 9:
 			// instrucciones 5
@@ -187,7 +220,14 @@ function draw() {
       //enemyKp.mover3();
       verifyEnemy();
       tiempo();
+      corazones();
 		break;
+    case 11:
+      image(perdiste,0,0);
+    break;
+    case 12:
+      image(ganaste,0,0);
+    break;
   }
 }
   function verifyEnemy() {
@@ -198,6 +238,7 @@ function draw() {
         if (dist(taylor.getXPos(), taylor.getYPos(), enemyK.getKPosX(), enemyK.getKPosY()) < 100) {
         taylor.llaveAtrapada = false;
         taylor.llaveAparecida = true;
+        taylor.puertaAparecido = false;
         taylor.llaveCol = 6;
         taylor.llaveFil = 2;
         taylor.llaveX = (taylor.llaveCol * 100) + 10;
@@ -212,10 +253,18 @@ function draw() {
         taylor.pjFil = 0;
         taylor.xPos = (taylor.pjCol * 100);
         taylor.yPos = (taylor.pjFil * 100) + 100;
+
+        //contador de vidas
+        lives -= 1;
+        console.log(lives);
+          if(lives == 0){
+            pantalla = 11;
+          }
       }
       if (dist(taylor.getXPos(), taylor.getYPos(), enemyK.getKPosX2(), enemyK.getKPosY2()) < 100) {
         taylor.llaveAtrapada = false;
         taylor.llaveAparecida = true;
+        taylor.puertaAparecido = false;
         taylor.llaveCol = 6;
         taylor.llaveFil = 2;
         taylor.llaveX = (taylor.llaveCol * 100) + 10;
@@ -230,12 +279,20 @@ function draw() {
         taylor.pjFil = 0;
         taylor.xPos = (taylor.pjCol * 100);
         taylor.yPos = (taylor.pjFil * 100) + 100;
+
+        //contador de vidas
+        lives -= 1;
+        console.log(lives);
+          if(lives == 0){
+            pantalla = 11;
+          }
       }
       break;
       case 4:
       if (dist(taylor2.getXPos(), taylor2.getYPos(), enemyH.getHPosX(), enemyH.getHPosY()) < 100){
         taylor2.llaveAtrapada = false;
         taylor2.llaveAparecida = true;
+        taylor2.puerta2Aparecido = false;
         taylor2.llaveCol = 11;
         taylor2.llaveFil = 1;
         taylor2.llaveX = (taylor2.llaveCol * 100);
@@ -250,10 +307,18 @@ function draw() {
         taylor2.pjFil = 1;
         taylor2.xPos = (taylor2.pjCol * 100);
         taylor2.yPos = (taylor2.pjFil * 100);
+
+        //contador de vidas
+        lives -= 1;
+        console.log(lives);
+          if(lives == 0){
+            pantalla = 11;
+          }
       }
       if (dist(taylor2.getXPos(), taylor2.getYPos(), enemyH.getHPosX2(), enemyH.getHPosY2()) < 100){
         taylor2.llaveAtrapada = false;
         taylor2.llaveAparecida = true;
+        taylor2.puerta2Aparecido = false;
         taylor2.llaveCol = 11;
         taylor2.llaveFil = 1;
         taylor2.llaveX = (taylor2.llaveCol * 100);
@@ -268,10 +333,18 @@ function draw() {
         taylor2.pjFil = 1;
         taylor2.xPos = (taylor2.pjCol * 100);
         taylor2.yPos = (taylor2.pjFil * 100);
+
+        //contador de vidas
+        lives -= 1;
+        console.log(lives);
+          if(lives == 0){
+            pantalla = 11;
+          }
       }
       if (dist(taylor2.getXPos(), taylor2.getYPos(), enemyH.getHPosX3(), enemyH.getHPosY3()) < 100){
         taylor2.llaveAtrapada = false;
         taylor2.llaveAparecida = true;
+        taylor2.puerta2Aparecido = false;
         taylor2.llaveCol = 11;
         taylor2.llaveFil = 1;
         taylor2.llaveX = (taylor2.llaveCol * 100);
@@ -286,12 +359,20 @@ function draw() {
         taylor2.pjFil = 1;
         taylor2.xPos = (taylor2.pjCol * 100);
         taylor2.yPos = (taylor2.pjFil * 100);
+
+        //contador de vidas
+        lives -= 1;
+        console.log(lives);
+          if(lives == 0){
+            pantalla = 11;
+          }
       }
       break;
       case 6:
       if (dist(taylor3.getXPos(), taylor3.getYPos(), enemyKp.getKPosX(), enemyKp.getKPosY()) < 100){
         taylor3.llaveAtrapada = false;
         taylor3.llaveAparecida = true;
+        taylor3.puerta2Aparecido = false;
         taylor3.llaveCol = 7;
         taylor3.llaveFil = 2;
         taylor3.llaveX = (taylor3.llaveCol * 100);
@@ -306,10 +387,18 @@ function draw() {
         taylor3.pjFil = 1;
         taylor3.xPos = (taylor2.pjCol * 100);
         taylor3.yPos = (taylor2.pjFil * 100);
+
+        //contador de vidas
+        lives -= 1;
+        console.log(lives);
+          if(lives == 0){
+            pantalla = 11;
+          }
       }
       if (dist(taylor3.getXPos(), taylor3.getYPos(), enemyKp.getKPosX2(), enemyKp.getKPosY2()) < 100){
         taylor3.llaveAtrapada = false;
         taylor3.llaveAparecida = true;
+        taylor3.puerta2Aparecido = false;
         taylor3.llaveCol = 7;
         taylor3.llaveFil = 2;
         taylor3.llaveX = (taylor3.llaveCol * 100);
@@ -324,6 +413,13 @@ function draw() {
         taylor3.pjFil = 1;
         taylor3.xPos = (taylor2.pjCol * 100);
         taylor3.yPos = (taylor2.pjFil * 100);
+
+        //contador de vidas
+        lives -= 1;
+        console.log(lives);
+          if(lives == 0){
+            pantalla = 11;
+          }
       }
       break;
       
@@ -331,6 +427,25 @@ function draw() {
   }
   }
 
+  xCorazones = 1000;
+  yCorazones = 10;
+
+  function corazones() {
+    if(!cor1 && lives == 3){
+      image(vidas,xCorazones + 100,yCorazones,50,50);
+    }
+
+    if(!cor2 && lives == 3 || lives == 2){
+      image(vidas,xCorazones + 50,yCorazones,50,50);
+
+    }
+
+    if(!cor3 && lives == 3 || lives == 2 || lives == 1){
+      image(vidas,xCorazones,yCorazones,50,50);
+    }
+    
+   
+  }
   function tiempo() {
 
         fill(255);
@@ -338,14 +453,14 @@ function draw() {
         textSize(70);
         text(time,1300,630);
 
-       if(frameCount % 60 == 0 && time > 0){
+       if(frameCount % 60 == 0 && time >= 0){
       time --;
         }
         if(time == 0){
-          text("Game over",width/2,height/2);
+          pantalla = 11;
     }
   }
-
+      
 
   function mousePressed() {
     //seguir a instrucciones
@@ -381,6 +496,11 @@ function draw() {
       case 9:
         if (dist(mouseX, mouseY, 1257, 635) < 50) {
           pantalla = 10;
+        }
+      break;
+      case 11:
+        if (dist(mouseX, mouseY, 1257, 635) < 50) {
+          pantalla = 0;
         }
       break;
     }
