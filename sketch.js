@@ -183,6 +183,7 @@ function draw() {
       //enemyKp.mover3();
       verifyEnemy();
       tiempo();
+      corazones();
 		break;
     case 7:
 			// instrucciones 4
@@ -197,6 +198,7 @@ function draw() {
       //enemyKp.mover3();
       verifyEnemy();
       tiempo();
+      corazones();
 		break;
     case 9:
 			// instrucciones 5
@@ -211,6 +213,7 @@ function draw() {
       //enemyKp.mover3();
       verifyEnemy();
       tiempo();
+      corazones();
 		break;
     case 11:
       image(perdiste,0,0);
@@ -267,6 +270,13 @@ function draw() {
         taylor.pjFil = 0;
         taylor.xPos = (taylor.pjCol * 100);
         taylor.yPos = (taylor.pjFil * 100) + 100;
+
+        //contador de vidas
+        lives -= 1;
+        console.log(lives);
+          if(lives == 0){
+            pantalla = 11;
+          }
       }
       break;
       case 4:
@@ -287,6 +297,13 @@ function draw() {
         taylor2.pjFil = 1;
         taylor2.xPos = (taylor2.pjCol * 100);
         taylor2.yPos = (taylor2.pjFil * 100);
+
+        //contador de vidas
+        lives -= 1;
+        console.log(lives);
+          if(lives == 0){
+            pantalla = 11;
+          }
       }
       if (dist(taylor2.getXPos(), taylor2.getYPos(), enemyH.getHPosX2(), enemyH.getHPosY2()) < 100){
         taylor2.llaveAtrapada = false;
@@ -305,6 +322,13 @@ function draw() {
         taylor2.pjFil = 1;
         taylor2.xPos = (taylor2.pjCol * 100);
         taylor2.yPos = (taylor2.pjFil * 100);
+
+        //contador de vidas
+        lives -= 1;
+        console.log(lives);
+          if(lives == 0){
+            pantalla = 11;
+          }
       }
       if (dist(taylor2.getXPos(), taylor2.getYPos(), enemyH.getHPosX3(), enemyH.getHPosY3()) < 100){
         taylor2.llaveAtrapada = false;
@@ -323,6 +347,13 @@ function draw() {
         taylor2.pjFil = 1;
         taylor2.xPos = (taylor2.pjCol * 100);
         taylor2.yPos = (taylor2.pjFil * 100);
+
+        //contador de vidas
+        lives -= 1;
+        console.log(lives);
+          if(lives == 0){
+            pantalla = 11;
+          }
       }
       break;
       case 6:
@@ -343,6 +374,13 @@ function draw() {
         taylor3.pjFil = 1;
         taylor3.xPos = (taylor2.pjCol * 100);
         taylor3.yPos = (taylor2.pjFil * 100);
+
+        //contador de vidas
+        lives -= 1;
+        console.log(lives);
+          if(lives == 0){
+            pantalla = 11;
+          }
       }
       if (dist(taylor3.getXPos(), taylor3.getYPos(), enemyKp.getKPosX2(), enemyKp.getKPosY2()) < 100){
         taylor3.llaveAtrapada = false;
@@ -361,6 +399,13 @@ function draw() {
         taylor3.pjFil = 1;
         taylor3.xPos = (taylor2.pjCol * 100);
         taylor3.yPos = (taylor2.pjFil * 100);
+
+        //contador de vidas
+        lives -= 1;
+        console.log(lives);
+          if(lives == 0){
+            pantalla = 11;
+          }
       }
       break;
       
