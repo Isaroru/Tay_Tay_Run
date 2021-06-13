@@ -39,8 +39,10 @@ class Kanye{
         if (frameCount % 20 == 0) {
             this.moveEnemy(this.mapReference);
         }
-        if (frameCount % 30 == 0) {
-            this.moveEnemy(this.mapReference);
+    }
+    mover2() {
+        if (frameCount % 40 == 0) {
+            this.moveEnemy2(this.mapReference);
         }
     }
     
@@ -63,37 +65,41 @@ class Kanye{
                     }
                 }
                 break;
-            case 2: // arriba
-                if (this.kCol2 - 1 >= 0) {
-                    if (this.mapReference[this.kFil2 - 1][this.kCol2] === 0) {
-                        this.kFil2 -= 1;
-                        this.moving2 = true;
-                    }
-                }
-                break;
-            case 3: // abajo
-                if (this.kCol2 + 1 < 6) {
-                    if (this.mapReference[this.kFil2 + 1][this.kCol2] === 0) {
-                        this.kFil2 += 1;
-                        this.moving2 = true;
-                    }
-                }
-                break;
         }
         if(this.kPosX <= 0){
             this.kDir = 1;
         }else if(this.kPosX >= 1100){
             this.kDir = 0;
         }
-        if(this.kPosY2 <= 500){
-            this.kDir2 = 3;
-        }else if(this.kPosY2 >= 600){
-            this.kDir2 = 2;
-        }
         this.kPosX = (this.kCol * 100);
         this.kPosY = (this.kFil * 100);
+    }
+    moveEnemy2() {
+        switch (this.kDir2) {
+            case 0: // arriba
+                if (this.kFil2 - 1 >= 0) {
+                    if (this.mapReference[this.kFil2 - 1][this.kCol2] === 0) {
+                        this.kFil2 -= 1;
+                        this.moving = true;
+                    }
+                }
+                break;
+            case 1: // abajo
+                if (this.kFil2 + 1 < 7) {
+                    if (this.mapReference[this.kFil2 + 1][this.kCol2] === 0) {
+                        this.kFil2 += 1;
+                        this.moving = true;
+                    }
+                }
+                break;
+        }
+        if(this.kPosY2 <=500){
+            this.kDir2 = 1;
+        }else if(this.kPosY2 >= 600){
+            this.kDir2 = 0;
+        }
         this.kPosX2 = (this.kCol2 * 100);
-        this.kPosY2 = (this.kFil2 * 100);
+        this.kPosY2 = (this.kFil2 * 100); 
     }
 
     getKPosX(){

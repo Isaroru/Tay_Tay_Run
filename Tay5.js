@@ -7,9 +7,9 @@ class Tay5{
         this.mapReference = mapReference;
         // posición inicial // remover despues para asignarla por nivel
         this.pjCol = 0;
-        this.pjFil = 0; 
-        this.xPos = (this.pjCol * 100) + 0;
-        this.yPos = (this.pjFil * 100) + 100; 
+        this.pjFil = 1; 
+        this.xPos = (this.pjCol * 100);
+        this.yPos = (this.pjFil * 100); 
         //llave
         this.llaveX = llaveX;
         this.llaveY = llaveY;
@@ -100,8 +100,8 @@ class Tay5{
             }
             break;
             }
-            this.xPos = (this.pjCol * 100) + 0;
-            this.yPos = (this.pjFil * 100) + 0;
+            this.xPos = (this.pjCol * 100);
+            this.yPos = (this.pjFil * 100);
             this.verifyItem();
     }
 

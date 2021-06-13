@@ -1,35 +1,76 @@
 class Scooter{
-    constructor(mapReference,kCol,kFil,kPosX,kPosY,kDir, moving,kCol2,kFil2,kPosX2,kPosY2,kDir2,kCol3,kFil3,kPosX3,kPosY3,kDir3){
-        this.kCol = kCol;
-        this.kFil = kFil;
-        this.kPosX = kPosX; 
-        this.kPosY = kPosY;
+    constructor(mapReference,sCol,sFil,sPosX,sPosY,sDir, moving,sCol2,sFil2,sPosX2,sPosY2,sDir2,
+        sCol3,sFil3,sPosX3,sPosY3,sDir3,sCol4,sFil4,sPosX4,sPosY4,sDir4,sCol5,sFil5,sPosX5,sPosY5,sDir5){
+        this.sCol = sCol;
+        this.sFil = sFil;
+        this.sPosX = sPosX; 
+        this.sPosY = sPosY;
         this.mapReference = mapReference;
-        this.kDir = kDir;
+        this.sDir = sDir;
         this.moving = moving;
 
-        this.kCol2 = kCol2;
-        this.kFil2 = kFil2;
-        this.kPosX2 = kPosX2; 
-        this.kPosY2 = kPosY2;
-        this.kDir2 = kDir2;
+        this.sCol2 = sCol2;
+        this.sFil2 = sFil2;
+        this.sPosX2 = sPosX2; 
+        this.sPosY2 = sPosY2;
+        this.sDir2 = sDir2;
 
-        this.kCol3 = kCol3;
-        this.kFil3 = kFil3;
-        this.kPosX3 = kPosX3; 
-        this.kPosY3 = kPosY3;
-        this.kDir3 = kDir3;
+        this.sCol3 = sCol3;
+        this.sFil3 = sFil3;
+        this.sPosX3 = sPosX3; 
+        this.sPosY3 = sPosY3;
+        this.sDir3 = sDir3;
 
-        this.kCol = 5;
-        this.kFil = 4;
-        this.kPosX = (this.kCol * 100); 
-        this.kPosY = (this.kFil * 100);
-        this.kDir = 0;
+        this.sCol4 = sCol4;
+        this.sFil4 = sFil4;
+        this.sPosX4 = sPosX4; 
+        this.sPosY4 = sPosY4;
+        this.sDir4 = sDir4;
+
+        this.sCol5 = sCol5;
+        this.sFil5 = sFil5;
+        this.sPosX5 = sPosX5; 
+        this.sPosY5 = sPosY5;
+        this.sDir5 = sDir5;
+
+        this.sCol = 5;
+        this.sFil = 3;
+        this.sPosX = (this.sCol * 100); 
+        this.sPosY = (this.sFil * 100);
+        this.sDir = 0;
         this.moving = false;
+
+        this.sCol2 = 11;
+        this.sFil2 = 5;
+        this.sPosX2 = (this.sCol2 * 100); 
+        this.sPosY2 = (this.sFil2 * 100);
+        this.sDir2 = 1;
+
+        this.sCol3 = 6;
+        this.sFil3 = 4;
+        this.sPosX3 = (this.sCol3 * 100); 
+        this.sPosY3 = (this.sFil3 * 100);
+        this.sDir3 = 1;
+
+        this.sCol4 = 7;
+        this.sFil4 = 6;
+        this.sPosX4 = (this.sCol4 * 100); 
+        this.sPosY4 = (this.sFil4 * 100);
+        this.sDir4 = 0;
+
+        this.sCol5 = 8;
+        this.sFil5 = 4;
+        this.sPosX5 = (this.sCol5 * 100); 
+        this.sPosY5 = (this.sFil5 * 100);
+        this.sDir5 = 1;
     }
 
     mostrar(){
-        image(scooter, this.kPosX, this.kPosY);
+        image(scooter, this.sPosX, this.sPosY);
+        image(scooter, this.sPosX2, this.sPosY2);
+        image(scooter, this.sPosX3, this.sPosY3);
+        image(scooter, this.sPosX4, this.sPosY4);
+        image(scooter, this.sPosX5, this.sPosY5);
     }
     
     mover() {
@@ -37,102 +78,286 @@ class Scooter{
             this.moveEnemy(this.mapReference);
         }
     }
-
-    
+    mover2() {
+        if (frameCount % 30 == 0) {
+            this.moveEnemy2(this.mapReference);
+        }
+    }
+    mover3() {
+        if (frameCount % 30 == 0) {
+            this.moveEnemy3(this.mapReference);
+        }
+    }
+    mover4() {
+        if (frameCount % 30 == 0) {
+            this.moveEnemy4(this.mapReference);
+        }
+    }
+    mover5() {
+        if (frameCount % 30 == 0) {
+            this.moveEnemy5(this.mapReference);
+        }
+    }
 
     moveEnemy() {
-        switch (this.kDir) {
+        switch (this.sDir) {
             case 0: // izquierda
-                if (this.kCol - 1 >= 0) {
-                    if (this.mapReference[this.kFil][this.kCol - 1] === 0) {
-                        this.kCol -= 1;
+                if (this.sCol - 1 >= 0) {
+                    if (this.mapReference[this.sFil][this.sCol - 1] === 0) {
+                        this.sCol -= 1;
                         this.moving = true;
                     }
                 }
                 break;
             case 1: // derecha
-                if (this.kCol + 1 < 12) {
-                    if (this.mapReference[this.kFil][this.kCol + 1] === 0) {
-                        this.kCol += 1;
-                        this.moving = true;
-                    }
-                }
-                break;
-            case 2: // arriba
-                if (this.kFil - 1 >= 0) {
-                    if (this.mapReference[this.kFil - 1][this.kCol] === 0) {
-                        this.kFil -= 1;
-                        this.moving = true;
-                    }
-                }
-                break;
-            case 3: // abajo
-                if (this.kFil + 1 < 7) {
-                    if (this.mapReference[this.kFil + 1][this.kCol] === 0) {
-                        this.kFil += 1;
+                if (this.sCol + 1 < 12) {
+                    if (this.mapReference[this.sFil][this.sCol + 1] === 0) {
+                        this.sCol += 1;
                         this.moving = true;
                     }
                 }
                 break;
         }
-        if (!this.moving){
-            this.kDir = int(random(0,4));
+        if(this.sPosX <= 0){
+            this.sDir = 1;
+        }else if(this.sPosX >= 500){
+            this.sDir = 0;
         }
-        this.kPosX = (this.kCol * 100);
-        this.kPosY = (this.kFil * 100);
+        this.sPosX = (this.sCol * 100);
+        this.sPosY = (this.sFil * 100);
+    }
+    moveEnemy2() {
+        switch (this.sDir2) {
+            case 0: // arriba
+                if (this.sFil2 - 1 >= 0) {
+                    if (this.mapReference[this.sFil2 - 1][this.sCol2] === 0) {
+                        this.sFil2 -= 1;
+                        this.moving = true;
+                    }
+                }
+                break;
+            case 1: // abajo
+                if (this.sFil2 + 1 < 7) {
+                    if (this.mapReference[this.sFil2 + 1][this.sCol2] === 0) {
+                        this.sFil2 += 1;
+                        this.moving = true;
+                    }
+                }
+                break;
+        }
+        if(this.sPosY2 <= 200){
+            this.sDir2 = 1;
+        }else if(this.sPosY2 >= 600){
+            this.sDir2 = 0;
+        }
+        this.sPosX2 = (this.sCol2 * 100);
+        this.sPosY2 = (this.sFil2 * 100); 
     }
 
+    moveEnemy3() {
+        switch (this.sDir3) {
+            case 0: // arriba
+                if (this.sFil3 - 1 >= 0) {
+                    if (this.mapReference[this.sFil3 - 1][this.sCol3] === 0) {
+                        this.sFil3 -= 1;
+                        this.moving = true;
+                    }
+                }
+                break;
+            case 1: // abajo
+                if (this.sFil3 + 1 < 7) {
+                    if (this.mapReference[this.sFil3 + 1][this.sCol3] === 0) {
+                        this.sFil3 += 1;
+                        this.moving = true;
+                    }
+                }
+                break;
+        }
+        if(this.sPosY3 <= 400){
+            this.sDir3 = 1;
+        }else if(this.sPosY3 >= 600){
+            this.sDir3 = 0;
+        }
+        this.sPosX3 = (this.sCol3 * 100);
+        this.sPosY3 = (this.sFil3 * 100); 
+    }
+    moveEnemy4() {
+        switch (this.sDir4) {
+            case 0: // arriba
+                if (this.sFil4 - 1 >= 0) {
+                    if (this.mapReference[this.sFil4 - 1][this.sCol4] === 0) {
+                        this.sFil4 -= 1;
+                        this.moving = true;
+                    }
+                }
+                break;
+            case 1: // abajo
+                if (this.sFil4 + 1 < 7) {
+                    if (this.mapReference[this.sFil4 + 1][this.sCol4] === 0) {
+                        this.sFil4 += 1;
+                        this.moving = true;
+                    }
+                }
+                break;
+        }
+        if(this.sPosY4 <= 400){
+            this.sDir4 = 1;
+        }else if(this.sPosY4 >= 600){
+            this.sDir4 = 0;
+        }
+        this.sPosX4 = (this.sCol4 * 100);
+        this.sPosY4 = (this.sFil4 * 100); 
+    }
+    moveEnemy5() {
+        switch (this.sDir5) {
+            case 0: // arriba
+                if (this.sFil5 - 1 >= 0) {
+                    if (this.mapReference[this.sFil5 - 1][this.sCol5] === 0) {
+                        this.sFil5 -= 1;
+                        this.moving = true;
+                    }
+                }
+                break;
+            case 1: // abajo
+                if (this.sFil5 + 1 < 7) {
+                    if (this.mapReference[this.sFil5 + 1][this.sCol5] === 0) {
+                        this.sFil5 += 1;
+                        this.moving = true;
+                    }
+                }
+                break;
+        }
+        if(this.sPosY5 <= 400){
+            this.sDir5 = 1;
+        }else if(this.sPosY5 >= 600){
+            this.sDir5 = 0;
+        }
+        this.sPosX5 = (this.sCol5 * 100);
+        this.sPosY5 = (this.sFil5 * 100); 
+    }
     
-    getKPosX(){
-        return this.kPosX;
+    getSPosX(){
+        return this.sPosX;
     }
-    setKPosX(kPosX){
-        this.kPosX = kPosX;
+    setSPosX(sPosX){
+        this.sPosX = sPosX;
     }
-    getKPosY(){
-        return this.kPosY;
+    getSPosY(){
+        return this.sPosY;
     }
-    setKPosY(kPosY){
-        this.kPosY = kPosY;
+    setSPosY(sPosY){
+        this.sPosY = sPosY;
     }
-    getKCol(){
-        return this.kCol;
+    getSCol(){
+        return this.sCol;
     }
-    setKCol(kCol){
-        this.kCol = kCol;
+    setSCol(sCol){
+        this.sCol = sCol;
     }
-    getKFil(){
-        return this.kFil;
+    getSFil(){
+        return this.sFil;
     }
-    setKFil(kFil){
-        this.kFil = kFil;
+    setSFil(sFil){
+        this.sFil = sFil;
     }
 
-    getKPosX2(){
-        return this.kPosX2;
+    getSPosX2(){
+        return this.sPosX2;
     }
-    setKPosX2(KPosX2){
-        this.kPosX2 = kPosX2;
+    setSPosX2(sPosX2){
+        this.sPosX2 = sPosX2;
     }
-    getKPosY2(){
-        return this.kPosY2;
+    getSPosY2(){
+        return this.sPosY2;
     }
-    setKPosY2(kPosY2){
-        this.kPosY2 = kPosY2;
+    setSPosY2(sPosY2){
+        this.sPosY2 = sPosY2;
     }
-    getKCol2(){
-        return this.kCol2;
+    getSCol2(){
+        return this.sCol2;
     }
-    setKCol2(kCol2){
-        this.kCol2 = kCol2;
+    setSCol2(sCol2){
+        this.sCol2 = sCol2;
     }
-    getKFil2(){
-        return this.kFil2;
+    getSFil2(){
+        return this.sFil2;
     }
-    setKFil2(kFil2){
-        this.kFil2 = kFil2;
+    setSFil2(sFil2){
+        this.sFil2 = sFil2;
     }
-    
+    getSPosX3(){
+        return this.sPosX3;
+    }
+    setSPosX3(sPosX3){
+        this.sPosX3 = sPosX3;
+    }
+    getSPosY3(){
+        return this.sPosY3;
+    }
+    setSPosY3(sPosY3){
+        this.sPosY3 = sPosY3;
+    }
+    getSCol3(){
+        return this.sCol3;
+    }
+    setSCol3(sCol3){
+        this.sCol3 = sCol3;
+    }
+    getSFil3(){
+        return this.sFil3;
+    }
+    setSFil3(sFil3){
+        this.sFil3 = sFil3;
+    }
 
+    getSPosX4(){
+        return this.sPosX4;
+    }
+    setSPosX4(sPosX4){
+        this.sPosX4 = sPosX4;
+    }
+    getSPosY4(){
+        return this.sPosY4;
+    }
+    setSPosY4(sPosY4){
+        this.sPosY4 = sPosY4;
+    }
+    getSCol4(){
+        return this.sCol4;
+    }
+    setSCol4(sCol4){
+        this.sCol4 = sCol4;
+    }
+    getSFil4(){
+        return this.sFil4;
+    }
+    setSFil4(sFil4){
+        this.sFil4 = sFil4;
+    }
+
+    getSPosX5(){
+        return this.sPosX5;
+    }
+    setSPosX5(sPosX5){
+        this.sPosX5 = sPosX5;
+    }
+    getSPosY5(){
+        return this.sPosY5;
+    }
+    setSPosY5(sPosY5){
+        this.sPosY5 = sPosY5;
+    }
+    getSCol5(){
+        return this.sCol5;
+    }
+    setSCol5(sCol5){
+        this.sCol5 = sCol5;
+    }
+    getSFil5(){
+        return this.sFil5;
+    }
+    setSFil5(sFil5){
+        this.sFil5 = sFil5;
+    }
     
 }

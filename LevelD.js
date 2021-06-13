@@ -53,7 +53,8 @@ class LevelD{
         this.mapa4[5][2] = 1;
         this.mapa4[5][3] = 1;
         this.mapa4[5][4] = 1;
-    }
+        }
+    
     mostrar(){
         image(fondo4, 0, 0);
         /*

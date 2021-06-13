@@ -68,6 +68,9 @@ let cor1 = false;
 let cor2 = false;
 let cor3 = false;
 
+//boolean para matar enemigos
+let matarEnemigo = false;
+
 let pantalla;
 
 function preload() {
@@ -118,7 +121,7 @@ function preload() {
 
 function setup() {
   createCanvas(1400, 700);
-  pantalla = 4;
+  pantalla = 0;
   levelA = new LevelA();
   taylor = new Tay(levelA.getMapReference());
   enemyK = new Kanye(levelA.getMapReference());
@@ -139,6 +142,7 @@ function setup() {
 
 function draw() {
   background(220);
+  pasarNivel();
   switch (pantalla) {
 		case 0:
 			// pantalla de inicio
@@ -154,11 +158,10 @@ function draw() {
       taylor.mostrar();
       enemyK.mostrar();
       enemyK.mover();
+      enemyK.mover2();
       verifyEnemy();
       tiempo();
       corazones();
-  
-      
     break;
     case 3:
 			// instrucciones 2
@@ -187,7 +190,7 @@ function draw() {
       enemyKp.mostrar();
       enemyKp.mover();
       enemyKp.mover2();
-      //enemyKp.mover3();
+      enemyKp.mover3();
       verifyEnemy();
       tiempo();
       corazones();
@@ -202,7 +205,8 @@ function draw() {
       taylor4.mostrar();
       enemyKk.mostrar();
       enemyKk.mover();
-      //enemyKp.mover3();
+      enemyKk.mover2();
+      enemyKk.mover3();
       verifyEnemy();
       tiempo();
       corazones();
@@ -217,7 +221,10 @@ function draw() {
       taylor5.mostrar();
       enemyS.mostrar();
       enemyS.mover();
-      //enemyKp.mover3();
+      enemyS.mover2();
+      enemyS.mover3();
+      enemyS.mover4();
+      enemyS.mover5();
       verifyEnemy();
       tiempo();
       corazones();
@@ -421,8 +428,246 @@ function draw() {
             pantalla = 11;
           }
       }
+      if (dist(taylor3.getXPos(), taylor3.getYPos(), enemyKp.getKPosX3(), enemyKp.getKPosY3()) < 100){
+        taylor3.llaveAtrapada = false;
+        taylor3.llaveAparecida = true;
+        taylor3.puerta2Aparecido = false;
+        taylor3.llaveCol = 7;
+        taylor3.llaveFil = 2;
+        taylor3.llaveX = (taylor3.llaveCol * 100);
+        taylor3.llaveY = (taylor3.llaveFil * 100);
+        taylor3.gatoAtrapado = false;
+        taylor3.gatoAparecido = true;
+        taylor3.gatoCol = 11;
+        taylor3.gatoFil = 3;
+        taylor3.gatoX = (taylor3.gatoCol * 100);
+        taylor3.gatoY = (taylor3.gatoFil * 100);
+        taylor3.pjCol = 0;
+        taylor3.pjFil = 1;
+        taylor3.xPos = (taylor2.pjCol * 100);
+        taylor3.yPos = (taylor2.pjFil * 100);
+
+        //contador de vidas
+        lives -= 1;
+        console.log(lives);
+          if(lives == 0){
+            pantalla = 11;
+          }
+      }
       break;
-      
+      case 8:
+        if (dist(taylor4.getXPos(), taylor4.getYPos(), enemyKk.getKPosX(), enemyKk.getKPosY()) < 100){
+          taylor4.llaveAtrapada = false;
+          taylor4.llaveAparecida = true;
+          taylor4.puerta2Aparecido = false;
+          taylor4.llaveCol = 8;
+          taylor4.llaveFil = 1;
+          taylor4.llaveX = (taylor4.llaveCol * 100+10);
+          taylor4.llaveY = (taylor4.llaveFil * 100+10);
+          taylor4.pajaroAtrapado = false;
+          taylor4.pajaroAparecido = true;
+          taylor4.pajaroCol = 0;
+          taylor4.pajaroFil = 6;
+          taylor4.pajaroX = (taylor4.pajaroCol * 100+10);
+          taylor4.pajaroY = (taylor4.pajaroFil * 100+10);
+          taylor4.pjCol = 0;
+          taylor4.pjFil = 1;
+          taylor4.xPos = (taylor2.pjCol * 100);
+          taylor4.yPos = (taylor2.pjFil * 100);
+  
+          //contador de vidas
+          lives -= 1;
+          console.log(lives);
+            if(lives == 0){
+              pantalla = 11;
+            }
+        }
+        if (dist(taylor4.getXPos(), taylor4.getYPos(), enemyKk.getKPosX2(), enemyKk.getKPosY2()) < 100){
+          taylor4.llaveAtrapada = false;
+          taylor4.llaveAparecida = true;
+          taylor4.puerta2Aparecido = false;
+          taylor4.llaveCol = 8;
+          taylor4.llaveFil = 1;
+          taylor4.llaveX = (taylor4.llaveCol * 100+10);
+          taylor4.llaveY = (taylor4.llaveFil * 100+10);
+          taylor4.pajaroAtrapado = false;
+          taylor4.pajaroAparecido = true;
+          taylor4.pajaroCol = 0;
+          taylor4.pajaroFil = 6;
+          taylor4.pajaroX = (taylor4.pajaroCol * 100+10);
+          taylor4.pajaroY = (taylor4.pajaroFil * 100+10);
+          taylor4.pjCol = 0;
+          taylor4.pjFil = 1;
+          taylor4.xPos = (taylor2.pjCol * 100);
+          taylor4.yPos = (taylor2.pjFil * 100);
+  
+          //contador de vidas
+          lives -= 1;
+          console.log(lives);
+            if(lives == 0){
+              pantalla = 11;
+            }
+        }
+        if (dist(taylor4.getXPos(), taylor4.getYPos(), enemyKk.getKPosX3(), enemyKk.getKPosY3()) < 100){
+          taylor4.llaveAtrapada = false;
+          taylor4.llaveAparecida = true;
+          taylor4.puerta2Aparecido = false;
+          taylor4.llaveCol = 8;
+          taylor4.llaveFil = 1;
+          taylor4.llaveX = (taylor4.llaveCol * 100+10);
+          taylor4.llaveY = (taylor4.llaveFil * 100+10);
+          taylor4.pajaroAtrapado = false;
+          taylor4.pajaroAparecido = true;
+          taylor4.pajaroCol = 0;
+          taylor4.pajaroFil = 6;
+          taylor4.pajaroX = (taylor4.pajaroCol * 100+10);
+          taylor4.pajaroY = (taylor4.pajaroFil * 100+10);
+          taylor4.pjCol = 0;
+          taylor4.pjFil = 1;
+          taylor4.xPos = (taylor2.pjCol * 100);
+          taylor4.yPos = (taylor2.pjFil * 100);
+  
+          //contador de vidas
+          lives -= 1;
+          console.log(lives);
+            if(lives == 0){
+              pantalla = 11;
+            }
+        }
+      break;
+      case 10:
+        if (dist(taylor5.getXPos(), taylor5.getYPos(), enemyS.getSPosX(), enemyS.getSPosY()) < 100){
+          taylor5.llaveAtrapada = false;
+          taylor5.llaveAparecida = true;
+          taylor5.puerta2Aparecido = false;
+          taylor5.llaveCol = 7;
+          taylor5.llaveFil = 1;
+          taylor5.llaveX = (taylor5.llaveCol * 100+10);
+          taylor5.llaveY = (taylor5.llaveFil * 100+10);
+          taylor5.cdAtrapado = false;
+          taylor5.cdAparecido = true;
+          taylor5.cdCol = 11;
+          taylor5.cdFil = 2;
+          taylor5.cdX = (taylor5.cdCol * 100+10);
+          taylor5.cdY = (taylor5.cdFil * 100+10);
+          taylor5.pjCol = 0;
+          taylor5.pjFil = 1;
+          taylor5.xPos = (taylor2.pjCol * 100);
+          taylor5.yPos = (taylor2.pjFil * 100);
+  
+          //contador de vidas
+          lives -= 1;
+          console.log(lives);
+            if(lives == 0){
+              pantalla = 11;
+            }
+        }
+        if (dist(taylor5.getXPos(), taylor5.getYPos(), enemyS.getSPosX2(), enemyS.getSPosY2()) < 100){
+          taylor5.llaveAtrapada = false;
+          taylor5.llaveAparecida = true;
+          taylor5.puerta2Aparecido = false;
+          taylor5.llaveCol = 7;
+          taylor5.llaveFil = 1;
+          taylor5.llaveX = (taylor5.llaveCol * 100+10);
+          taylor5.llaveY = (taylor5.llaveFil * 100+10);
+          taylor5.cdAtrapado = false;
+          taylor5.cdAparecido = true;
+          taylor5.cdCol = 11;
+          taylor5.cdFil = 2;
+          taylor5.cdX = (taylor5.cdCol * 100+10);
+          taylor5.cdY = (taylor5.cdFil * 100+10);
+          taylor5.pjCol = 0;
+          taylor5.pjFil = 1;
+          taylor5.xPos = (taylor2.pjCol * 100);
+          taylor5.yPos = (taylor2.pjFil * 100);
+  
+          //contador de vidas
+          lives -= 1;
+          console.log(lives);
+            if(lives == 0){
+              pantalla = 11;
+            }
+        }
+        if (dist(taylor5.getXPos(), taylor5.getYPos(), enemyS.getSPosX3(), enemyS.getSPosY3()) < 100){
+          taylor5.llaveAtrapada = false;
+          taylor5.llaveAparecida = true;
+          taylor5.puerta2Aparecido = false;
+          taylor5.llaveCol = 7;
+          taylor5.llaveFil = 1;
+          taylor5.llaveX = (taylor5.llaveCol * 100+10);
+          taylor5.llaveY = (taylor5.llaveFil * 100+10);
+          taylor5.cdAtrapado = false;
+          taylor5.cdAparecido = true;
+          taylor5.cdCol = 11;
+          taylor5.cdFil = 2;
+          taylor5.cdX = (taylor5.cdCol * 100+10);
+          taylor5.cdY = (taylor5.cdFil * 100+10);
+          taylor5.pjCol = 0;
+          taylor5.pjFil = 1;
+          taylor5.xPos = (taylor2.pjCol * 100);
+          taylor5.yPos = (taylor2.pjFil * 100);
+  
+          //contador de vidas
+          lives -= 1;
+          console.log(lives);
+            if(lives == 0){
+              pantalla = 11;
+            }
+        }
+        if (dist(taylor5.getXPos(), taylor5.getYPos(), enemyS.getSPosX4(), enemyS.getSPosY4()) < 100){
+          taylor5.llaveAtrapada = false;
+          taylor5.llaveAparecida = true;
+          taylor5.puerta2Aparecido = false;
+          taylor5.llaveCol = 7;
+          taylor5.llaveFil = 1;
+          taylor5.llaveX = (taylor5.llaveCol * 100+10);
+          taylor5.llaveY = (taylor5.llaveFil * 100+10);
+          taylor5.cdAtrapado = false;
+          taylor5.cdAparecido = true;
+          taylor5.cdCol = 11;
+          taylor5.cdFil = 2;
+          taylor5.cdX = (taylor5.cdCol * 100+10);
+          taylor5.cdY = (taylor5.cdFil * 100+10);
+          taylor5.pjCol = 0;
+          taylor5.pjFil = 1;
+          taylor5.xPos = (taylor2.pjCol * 100);
+          taylor5.yPos = (taylor2.pjFil * 100);
+  
+          //contador de vidas
+          lives -= 1;
+          console.log(lives);
+            if(lives == 0){
+              pantalla = 11;
+            }
+        }
+        if (dist(taylor5.getXPos(), taylor5.getYPos(), enemyS.getSPosX5(), enemyS.getSPosY5()) < 100){
+          taylor5.llaveAtrapada = false;
+          taylor5.llaveAparecida = true;
+          taylor5.puerta2Aparecido = false;
+          taylor5.llaveCol = 7;
+          taylor5.llaveFil = 1;
+          taylor5.llaveX = (taylor5.llaveCol * 100+10);
+          taylor5.llaveY = (taylor5.llaveFil * 100+10);
+          taylor5.cdAtrapado = false;
+          taylor5.cdAparecido = true;
+          taylor5.cdCol = 11;
+          taylor5.cdFil = 2;
+          taylor5.cdX = (taylor5.cdCol * 100+10);
+          taylor5.cdY = (taylor5.cdFil * 100+10);
+          taylor5.pjCol = 0;
+          taylor5.pjFil = 1;
+          taylor5.xPos = (taylor2.pjCol * 100);
+          taylor5.yPos = (taylor2.pjFil * 100);
+  
+          //contador de vidas
+          lives -= 1;
+          console.log(lives);
+            if(lives == 0){
+              pantalla = 11;
+            }
+        }
+      break;
+
     
   }
   }
@@ -460,6 +705,8 @@ function draw() {
           pantalla = 11;
     }
   }
+
+
       
 
   function mousePressed() {
@@ -523,12 +770,51 @@ function draw() {
       case 6:
         taylor3.mover();
         break;
+        //nivel 4
       case 8:
         taylor4.mover();
         break;
+        //nivel 5
       case 10:
         taylor5.mover();
         break;
+  }
+}
+
+function pasarNivel(){
+  switch (pantalla) {
+    case 0:
+      break;
+    //nivel 1
+    case 2:
+      if(taylor.llaveAtrapada ==true && taylor.cdAtrapado==true){
+        pantalla = 3;
+      }
+      break;
+    //nivel 2
+    case 4:
+      if(taylor2.llaveAtrapada ==true && taylor2.avionAtrapado==true){
+        pantalla = 5;
+      }
+      break;
+      //nivel 3
+    case 6:
+      if(taylor3.llaveAtrapada ==true && taylor3.gatoAtrapado==true){
+        pantalla = 7;
+      }
+      break;
+      //nivel 4
+    case 8:
+      if(taylor4.llaveAtrapada ==true && taylor4.pajaroAtrapado==true){
+        pantalla = 9;
+      }
+      break;
+      //nivel 5
+    case 10:
+      if(taylor5.llaveAtrapada ==true && taylor5.cdAtrapado==true){
+        pantalla = 12;
+      }
+      break;
 
   }
 }

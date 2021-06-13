@@ -85,7 +85,7 @@ class Katy{
         }
         if(this.kPosX >= 700){
             this.kDir = 0;
-        }else if(this.kPosX <= 0){
+        }else if(this.kPosX <= 100){
             this.kDir = 1;
         }
         this.kPosX = (this.kCol * 100);
@@ -112,7 +112,7 @@ class Katy{
                 break;
         }
         
-        if(this.kPosX2 <= 0){
+        if(this.kPosX2 <= 100){
             this.kDir2 = 1;
         }else if(this.kPosX2 >= 700){
             this.kDir2 = 0;
@@ -124,7 +124,7 @@ class Katy{
         switch (this.kDir3) {
             case 0: // arriba
                 if (this.kFil3 - 1 >= 0) {
-                    if (this.mapReference2[this.kFil3 - 1][this.kCol3] === 0) {
+                    if (this.mapReference[this.kFil3 - 1][this.kCol3] === 0) {
                         this.kFil3 -= 1;
                         this.moving = true;
                     }
@@ -132,14 +132,14 @@ class Katy{
                 break;
             case 1: // abajo
                 if (this.kFil3 + 1 < 7) {
-                    if (this.mapReference2[this.kFil3 + 1][this.kCol3] === 0) {
+                    if (this.mapReference[this.kFil3 + 1][this.kCol3] === 0) {
                         this.kFil3 += 1;
                         this.moving = true;
                     }
                 }
                 break;
         }
-        if(this.kPosY3 <= 200){
+        if(this.kPosY3 <=300){
             this.kDir3 = 1;
         }else if(this.kPosY3 >= 600){
             this.kDir3 = 0;
@@ -198,6 +198,30 @@ class Katy{
         this.kFil2 = kFil2;
     }
     
+    getKPosX3(){
+        return this.kPosX3;
+    }
+    setKPosX3(KPosX3){
+        this.kPosX3 = kPosX3;
+    }
+    getKPosY3(){
+        return this.kPosY3;
+    }
+    setKPosY3(kPosY3){
+        this.kPosY3 = kPosY3;
+    }
+    getKCol3(){
+        return this.kCol3;
+    }
+    setKCol3(kCol3){
+        this.kCol3 = kCol3;
+    }
+    getKFil3(){
+        return this.kFil3;
+    }
+    setKFil3(kFil3){
+        this.kFil3 = kFil3;
+    }
 
     
 }
