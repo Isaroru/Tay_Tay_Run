@@ -229,9 +229,11 @@ function draw() {
       tiempo();
       corazones();
 		break;
+      // perdiste
     case 11:
       image(perdiste,0,0);
     break;
+      // ganaste!!!
     case 12:
       image(ganaste,0,0);
     break;
@@ -392,8 +394,8 @@ function draw() {
         taylor3.gatoY = (taylor3.gatoFil * 100);
         taylor3.pjCol = 0;
         taylor3.pjFil = 1;
-        taylor3.xPos = (taylor2.pjCol * 100);
-        taylor3.yPos = (taylor2.pjFil * 100);
+        taylor3.xPos = (taylor3.pjCol * 100);
+        taylor3.yPos = (taylor3.pjFil * 100);
 
         //contador de vidas
         lives -= 1;
@@ -418,8 +420,8 @@ function draw() {
         taylor3.gatoY = (taylor3.gatoFil * 100);
         taylor3.pjCol = 0;
         taylor3.pjFil = 1;
-        taylor3.xPos = (taylor2.pjCol * 100);
-        taylor3.yPos = (taylor2.pjFil * 100);
+        taylor3.xPos = (taylor3.pjCol * 100);
+        taylor3.yPos = (taylor3.pjFil * 100);
 
         //contador de vidas
         lives -= 1;
@@ -444,8 +446,8 @@ function draw() {
         taylor3.gatoY = (taylor3.gatoFil * 100);
         taylor3.pjCol = 0;
         taylor3.pjFil = 1;
-        taylor3.xPos = (taylor2.pjCol * 100);
-        taylor3.yPos = (taylor2.pjFil * 100);
+        taylor3.xPos = (taylor3.pjCol * 100);
+        taylor3.yPos = (taylor3.pjFil * 100);
 
         //contador de vidas
         lives -= 1;
@@ -472,8 +474,8 @@ function draw() {
           taylor4.pajaroY = (taylor4.pajaroFil * 100+10);
           taylor4.pjCol = 0;
           taylor4.pjFil = 1;
-          taylor4.xPos = (taylor2.pjCol * 100);
-          taylor4.yPos = (taylor2.pjFil * 100);
+          taylor4.xPos = (taylor4.pjCol * 100);
+          taylor4.yPos = (taylor4.pjFil * 100);
   
           //contador de vidas
           lives -= 1;
@@ -498,8 +500,8 @@ function draw() {
           taylor4.pajaroY = (taylor4.pajaroFil * 100+10);
           taylor4.pjCol = 0;
           taylor4.pjFil = 1;
-          taylor4.xPos = (taylor2.pjCol * 100);
-          taylor4.yPos = (taylor2.pjFil * 100);
+          taylor4.xPos = (taylor4.pjCol * 100);
+          taylor4.yPos = (taylor4.pjFil * 100);
   
           //contador de vidas
           lives -= 1;
@@ -524,8 +526,8 @@ function draw() {
           taylor4.pajaroY = (taylor4.pajaroFil * 100+10);
           taylor4.pjCol = 0;
           taylor4.pjFil = 1;
-          taylor4.xPos = (taylor2.pjCol * 100);
-          taylor4.yPos = (taylor2.pjFil * 100);
+          taylor4.xPos = (taylor4.pjCol * 100);
+          taylor4.yPos = (taylor4.pjFil * 100);
   
           //contador de vidas
           lives -= 1;
@@ -552,8 +554,8 @@ function draw() {
           taylor5.cdY = (taylor5.cdFil * 100+10);
           taylor5.pjCol = 0;
           taylor5.pjFil = 1;
-          taylor5.xPos = (taylor2.pjCol * 100);
-          taylor5.yPos = (taylor2.pjFil * 100);
+          taylor5.xPos = (taylor5.pjCol * 100);
+          taylor5.yPos = (taylor5.pjFil * 100);
   
           //contador de vidas
           lives -= 1;
@@ -578,8 +580,8 @@ function draw() {
           taylor5.cdY = (taylor5.cdFil * 100+10);
           taylor5.pjCol = 0;
           taylor5.pjFil = 1;
-          taylor5.xPos = (taylor2.pjCol * 100);
-          taylor5.yPos = (taylor2.pjFil * 100);
+          taylor5.xPos = (taylor5.pjCol * 100);
+          taylor5.yPos = (taylor5.pjFil * 100);
   
           //contador de vidas
           lives -= 1;
@@ -604,8 +606,8 @@ function draw() {
           taylor5.cdY = (taylor5.cdFil * 100+10);
           taylor5.pjCol = 0;
           taylor5.pjFil = 1;
-          taylor5.xPos = (taylor2.pjCol * 100);
-          taylor5.yPos = (taylor2.pjFil * 100);
+          taylor5.xPos = (taylor5.pjCol * 100);
+          taylor5.yPos = (taylor5.pjFil * 100);
   
           //contador de vidas
           lives -= 1;
@@ -630,8 +632,8 @@ function draw() {
           taylor5.cdY = (taylor5.cdFil * 100+10);
           taylor5.pjCol = 0;
           taylor5.pjFil = 1;
-          taylor5.xPos = (taylor2.pjCol * 100);
-          taylor5.yPos = (taylor2.pjFil * 100);
+          taylor5.xPos = (taylor5.pjCol * 100);
+          taylor5.yPos = (taylor5.pjFil * 100);
   
           //contador de vidas
           lives -= 1;
@@ -656,8 +658,8 @@ function draw() {
           taylor5.cdY = (taylor5.cdFil * 100+10);
           taylor5.pjCol = 0;
           taylor5.pjFil = 1;
-          taylor5.xPos = (taylor2.pjCol * 100);
-          taylor5.yPos = (taylor2.pjFil * 100);
+          taylor5.xPos = (taylor5.pjCol * 100);
+          taylor5.yPos = (taylor5.pjFil * 100);
   
           //contador de vidas
           lives -= 1;
@@ -667,8 +669,6 @@ function draw() {
             }
         }
       break;
-
-    
   }
   }
 
@@ -679,20 +679,16 @@ function draw() {
     if(!cor1 && lives == 3){
       image(vidas,xCorazones + 100,yCorazones,50,50);
     }
-
     if(!cor2 && lives == 3 || lives == 2){
       image(vidas,xCorazones + 50,yCorazones,50,50);
 
     }
-
     if(!cor3 && lives == 3 || lives == 2 || lives == 1){
       image(vidas,xCorazones,yCorazones,50,50);
     }
-    
-   
   }
-  function tiempo() {
 
+  function tiempo() {
         fill(255);
         textAlign(CENTER,CENTER);
         textSize(70);
@@ -705,9 +701,6 @@ function draw() {
           pantalla = 11;
     }
   }
-
-
-      
 
   function mousePressed() {
     //seguir a instrucciones
@@ -735,26 +728,138 @@ function draw() {
           pantalla = 6;
         }
       break;
+      //empezar nivel 4
       case 7:
         if (dist(mouseX, mouseY, 1257, 635) < 50) {
           pantalla = 8;
         }
       break;
+      //empezar nivel 5
       case 9:
         if (dist(mouseX, mouseY, 1257, 635) < 50) {
           pantalla = 10;
         }
       break;
+      //volver a empezar porque perdió
       case 11:
         if (dist(mouseX, mouseY, 1257, 635) < 50) {
+          //reiniciar juego
           pantalla = 0;
+          lives = 3;
+          time = 120;
+          taylor.llaveAtrapada = false ;
+          taylor.cdAtrapado = false;
+          taylor.cdAparecido = true;
+          taylor.llaveAparecida = true;
+          taylor.puertaAparecido = false;
+          taylor.pjCol = 0;
+          taylor.pjFil = 1;
+          taylor.xPos = (taylor.pjCol * 100);
+          taylor.yPos = (taylor.pjFil * 100);
+
+          taylor2.llaveAtrapada = false;
+          taylor2.avionAtrapado = false;
+          taylor2.avionAparecido = true;
+          taylor2.llaveAparecida = true;
+          taylor2.puerta2Aparecido = false;
+          taylor2.pjCol = 0;
+          taylor2.pjFil = 1;
+          taylor2.xPos = (taylor2.pjCol * 100);
+          taylor2.yPos = (taylor2.pjFil * 100);
+
+          taylor3.llaveAtrapada = false;
+          taylor3.gatoAtrapado = false;
+          taylor3.gatoAparecido = true;
+          taylor3.llaveAparecida = true;
+          taylor3.puerta2Aparecido = false;
+          taylor3.pjCol = 0;
+          taylor3.pjFil = 1;
+          taylor3.xPos = (taylor3.pjCol * 100);
+          taylor3.yPos = (taylor3.pjFil * 100);
+
+          taylor4.llaveAtrapada = false;
+          taylor4.pajaroAtrapado = false;
+          taylor4.llaveAparecida = true;
+          taylor4.puerta2Aparecido = false;
+          taylor4.pajaroAparecido = true;
+          taylor4.pjCol = 0;
+          taylor4.pjFil = 1;
+          taylor4.xPos = (taylor4.pjCol * 100);
+          taylor4.yPos = (taylor4.pjFil * 100);
+
+          taylor5.llaveAtrapada = false ;
+          taylor5.cdAtrapado = false;
+          taylor5.cdAparecido = true;
+          taylor5.llaveAparecida = true;
+          taylor5.puerta2Aparecido = false;
+          taylor5.pjCol = 0;
+          taylor5.pjFil = 1;
+          taylor5.xPos = (taylor5.pjCol * 100);
+          taylor5.yPos = (taylor5.pjFil * 100);
+        }
+      break;
+    //volver a empezar porque ganó
+      case 12:
+        if (dist(mouseX, mouseY, 1257, 635) < 50) {
+          //reiniciar juego
+          pantalla = 0;
+          lives = 3;
+          time = 120;
+          taylor.llaveAtrapada = false ;
+          taylor.cdAtrapado = false;
+          taylor.cdAparecido = true;
+          taylor.llaveAparecida = true;
+          taylor.puertaAparecido = false;
+          taylor.pjCol = 0;
+          taylor.pjFil = 1;
+          taylor.xPos = (taylor.pjCol * 100);
+          taylor.yPos = (taylor.pjFil * 100);
+
+          taylor2.llaveAtrapada = false;
+          taylor2.avionAtrapado = false;
+          taylor2.avionAparecido = true;
+          taylor2.llaveAparecida = true;
+          taylor2.puerta2Aparecido = false;
+          taylor2.pjCol = 0;
+          taylor2.pjFil = 1;
+          taylor2.xPos = (taylor2.pjCol * 100);
+          taylor2.yPos = (taylor2.pjFil * 100);
+
+          taylor3.llaveAtrapada = false;
+          taylor3.gatoAtrapado = false;
+          taylor3.gatoAparecido = true;
+          taylor3.llaveAparecida = true;
+          taylor3.puerta2Aparecido = false;
+          taylor3.pjCol = 0;
+          taylor3.pjFil = 1;
+          taylor3.xPos = (taylor3.pjCol * 100);
+          taylor3.yPos = (taylor3.pjFil * 100);
+
+          taylor4.llaveAtrapada = false;
+          taylor4.pajaroAtrapado = false;
+          taylor4.llaveAparecida = true;
+          taylor4.puerta2Aparecido = false;
+          taylor4.pajaroAparecido = true;
+          taylor4.pjCol = 0;
+          taylor4.pjFil = 1;
+          taylor4.xPos = (taylor4.pjCol * 100);
+          taylor4.yPos = (taylor4.pjFil * 100);
+
+          taylor5.llaveAtrapada = false ;
+          taylor5.cdAtrapado = false;
+          taylor5.cdAparecido = true;
+          taylor5.llaveAparecida = true;
+          taylor5.puerta2Aparecido = false;
+          taylor5.pjCol = 0;
+          taylor5.pjFil = 1;
+          taylor5.xPos = (taylor5.pjCol * 100);
+          taylor5.yPos = (taylor5.pjFil * 100);
         }
       break;
     }
   }
 
   function keyPressed() {
-    
     switch (pantalla) {
       case 0:
         break;
@@ -815,7 +920,6 @@ function pasarNivel(){
         pantalla = 12;
       }
       break;
-
   }
 }
   
