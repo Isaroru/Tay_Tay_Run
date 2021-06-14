@@ -168,7 +168,7 @@ function preload() {
 
 function setup() {
   createCanvas(1400, 700);
-  pantalla = 17;
+  pantalla = 0;
   levelA = new LevelA();
   taylor = new Tay(levelA.getMapReference());
   enemyK = new Kanye(levelA.getMapReference());
