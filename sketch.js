@@ -78,6 +78,7 @@ let minJ3;
 let gata;
 let pez;
 let mer;
+let mapaMinij3;
 
 let minJ4;
 
@@ -140,7 +141,7 @@ function preload() {
 
 function setup() {
   createCanvas(1400, 700);
-  pantalla = 15;
+  pantalla = 4;
   levelA = new LevelA();
   taylor = new Tay(levelA.getMapReference());
   enemyK = new Kanye(levelA.getMapReference());
@@ -156,7 +157,8 @@ function setup() {
   levelE = new LevelE();
   taylor5 = new Tay5(levelE.getMapReference5());
   enemyS = new Scooter(levelE.getMapReference5());
-  mer = new GataMer();
+  mapaMinij3 = new MapaMj3();
+  mer = new GataMer(mapaMinij3.getMapReferenceMj3());
   
 }
 
@@ -265,7 +267,7 @@ function draw() {
       image(minJ2,0,0);
     break;
     case 15:
-      image(minJ3,0,0);
+      mapaMinij3.mostrar();
       mer.mostrar();
     break;
     case 16:
@@ -893,7 +895,6 @@ function draw() {
           taylor5.yPos = (taylor5.pjFil * 100);
         }
       break;
-
       case 14:
         if (dist(mouseX, mouseY, 450, 350) < 100) {
           pantalla = 5;
@@ -931,7 +932,6 @@ function draw() {
       case 10:
         taylor5.mover();
         break;
-        
         //minijuego3
       case 15:
         mer.mover();
@@ -971,6 +971,12 @@ function pasarNivel(){
     case 10:
       if(taylor5.llaveAtrapada ==true && taylor5.cdAtrapado==true){
         pantalla = 17;
+      }
+      break;
+    case 15:
+      if(mer.pezAtrapado == true && mer.pezAtrapado2 == true && mer.pezAtrapado3 == true
+        && mer.pezAtrapado4 == true && mer.pezAtrapado5 == true){
+        pantalla = 7;
       }
       break;
   }

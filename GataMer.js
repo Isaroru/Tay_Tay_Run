@@ -44,68 +44,68 @@ class GataMer{
 
         this.pezCol = 3;
         this.pezFil = 1;
-        this.pezPosX = (this.pezCol * 100); 
-        this.pezPosY = (this.pezFil * 100);
+        this.pezPosX = (this.pezCol * 100 + 15); 
+        this.pezPosY = (this.pezFil * 100 + 15);
         this.pezAtrapado = false;
 
         this.pezCol2 = 2;
         this.pezFil2 = 4;
-        this.pezPosX2 = (this.pezCol2 * 100); 
-        this.pezPosY2 = (this.pezFil2 * 100);
+        this.pezPosX2 = (this.pezCol2 * 100 + 15); 
+        this.pezPosY2 = (this.pezFil2 * 100 + 15);
         this.pezAtrapado2 = false;
 
         this.pezCol3 = 4;
         this.pezFil3 = 2;
-        this.pezPosX3 = (this.pezCol3 * 100); 
-        this.pezPosY3 = (this.pezFil3 * 100);
+        this.pezPosX3 = (this.pezCol3 * 100 + 15); 
+        this.pezPosY3 = (this.pezFil3 * 100 + 15);
         this.pezAtrapado3 = false;
 
         this.pezCol4 = 5;
         this.pezFil4 = 5;
-        this.pezPosX4 = (this.pezCol4 * 100); 
-        this.pezPosY4 = (this.pezFil4 * 100);
+        this.pezPosX4 = (this.pezCol4 * 100 + 15); 
+        this.pezPosY4 = (this.pezFil4 * 100 + 15);
         this.pezAtrapado4 = false;
 
         this.pezCol5 = 6;
         this.pezFil5 = 3;
-        this.pezPosX5 = (this.pezCol5 * 100); 
-        this.pezPosY5 = (this.pezFil5 * 100);
+        this.pezPosX5 = (this.pezCol5 * 100 + 15); 
+        this.pezPosY5 = (this.pezFil5 * 100 + 15);
         this.pezAtrapado5 = false;
     }
 
     mostrar(){
         image(gata, this.mPosX, this.mPosY,100,100);
         if (!this.pezAtrapado){
-            image (pez, this.pezX,this.pezY,60,60);    
+            image (pez, this.pezPosX,this.pezPosY,70,70);    
         }
         if (!this.pezAtrapado2){
-            image (pez, this.pezPosX2,this.pezPosY2,60,60);   
+            image (pez, this.pezPosX2,this.pezPosY2,70,70);   
         }
         if (!this.pezAtrapado3){
-            image (pez, this.pezPosX3,this.pezPosY3,60,60);   
+            image (pez, this.pezPosX3,this.pezPosY3,70,70);   
         }
         if (!this.pezAtrapado4){
-            image (pez, this.pezPosX4,this.pezPosY4,60,60);   
+            image (pez, this.pezPosX4,this.pezPosY4,70,70);   
         }
         if (!this.pezAtrapado5){
-            image (pez, this.pezPosX5,this.pezPosY5,60,60);   
+            image (pez, this.pezPosX5,this.pezPosY5,70,70);   
         }
     }
 
     verifyItem(){
-        if(dist(this.xPos,this.yPos,this.pezX,this.pezY) < 50){
+        if(dist(this.mPosX,this.mPosY,this.pezPosX,this.pezPosY) < 50){
             this.pezAtrapado = true;
         }
-        if(dist(this.xPos,this.yPos,this.pezPosX2,this.pezPosY2) < 50){
+        if(dist(this.mPosX,this.mPosY,this.pezPosX2,this.pezPosY2) < 50){
             this.pezAtrapado2 = true;
         }
-        if(dist(this.xPos,this.yPos,this.pezPosX3,this.pezPosY3) < 50){
+        if(dist(this.mPosX,this.mPosY,this.pezPosX3,this.pezPosY3) < 50){
             this.pezAtrapado3 = true;
         }
-        if(dist(this.xPos,this.yPos,this.pezPosX4,this.pezPosY4) < 50){
+        if(dist(this.mPosX,this.mPosY,this.pezPosX4,this.pezPosY4) < 50){
             this.pezAtrapado4 = true;
         }
-        if(dist(this.xPos,this.yPos,this.pezPosX5,this.pezPosY5) < 50){
+        if(dist(this.mPosX,this.mPosY,this.pezPosX5,this.pezPosY5) < 50){
             this.pezAtrapado5 = true;
         }
     }
@@ -146,10 +146,10 @@ class GataMer{
             this.verifyItem();
     }
 
-    getXPos(){
+    getMPosX(){
         return this.mPosX;
     }
-    setMPosX(mPosx){
+    setMPosX(mPosX){
         this.mPosX = mPosX;
     }
     getMPosY(){
