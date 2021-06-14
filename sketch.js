@@ -168,7 +168,7 @@ function preload() {
 
 function setup() {
   createCanvas(1400, 700);
-  pantalla = 0;
+  pantalla = 17;
   levelA = new LevelA();
   taylor = new Tay(levelA.getMapReference());
   enemyK = new Kanye(levelA.getMapReference());
@@ -188,13 +188,8 @@ function setup() {
   mer = new GataMer(mapaMinij3.getMapReferenceMj3());
 
   bala = new BalaMinJ5();
-  
-  
-  
-
 
   setupMJ1();
-  
 }
 
   MJ5 = new MinJ5();
@@ -351,6 +346,7 @@ function validarDisparoScooter(mar, bala) {
   }
   return false;
 }
+
 
   function verifyEnemy() {
     switch (pantalla) {
@@ -897,40 +893,22 @@ function validarDisparoScooter(mar, bala) {
   function personajeMJ1() {
 
     image(tay1,posicionX,posicionY,60,60);
-    /*if (arriba) {
-      posicionY -= 10;
-    }
-    if (abajo) {
-      posicionY += 10;
-    }
-  
-    if (izquierda) {
-      posicionX -= 10;
-    }
-    if (derecha) {
-      posicionX += 10;
-    }*/
 
     if(keyIsPressed){
-    switch (key) {
-      case "w":
-      case "W":
+    switch (keyCode) {
+      case UP_ARROW:
         posicionY -= 2;
         break;
-      case "s":
-      case "S":
+      case DOWN_ARROW:
         posicionY += 2;
         break;
   
-      case "a":
-      case "A":
+      case LEFT_ARROW:
         posicionX -= 2;
         break;
-      case "d":
-      case "D":
+      case RIGHT_ARROW:
         posicionX += 2;
         break;
-  
     }
   }
   
@@ -958,9 +936,6 @@ function validarDisparoScooter(mar, bala) {
   }
 
 
-  function mostrarMJ5() {
-    
-  }
 
   function mousePressed() {
     //seguir a instrucciones
@@ -1116,14 +1091,22 @@ function validarDisparoScooter(mar, bala) {
           taylor5.yPos = (taylor5.pjFil * 100);
         }
       break;
+      //minijuego 2 encontrar corazón roto
       case 14:
         if (dist(mouseX, mouseY, 450, 350) < 100) {
           pantalla = 5;
         }
       break;
+      //minijuego 4 encontrar kim 
       case 16:
         if (dist(mouseX, mouseY, 250, 350) < 100) {
           pantalla = 9;
+        }
+      break;
+      //terminar minijuego 5 pasar a pantalla ganaste
+      case 17:
+        if (dist(mouseX, mouseY, 1250, 650) < 100) {
+          pantalla = 12;
         }
       break;
     }

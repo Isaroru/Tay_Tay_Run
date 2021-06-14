@@ -1,12 +1,9 @@
 class MinJ5{
     constructor(x,y){
-
         this.x = 390;
         this.y = 600;
         this.cargador = []
         this.velDisparo = 0;
-
-
     }
     mostrarTanque(){
         fill(255,0,0);
@@ -17,23 +14,21 @@ class MinJ5{
         rect(this.x + 18, this.y - 20, 5 , 5);
 
         for (let index = 0; index < this.cargador.length; index++) {
-        
             this.cargador[index].pintar();
             this.cargador[index].mover();
         }
-
     }
 
     moverTanque(){
         if(keyIsPressed){
-            switch(key){
-                case 'a':
+            switch(keyCode){
+                case LEFT_ARROW:
                     this.x -=4;
                     break;
-                case 'd':
+                case RIGHT_ARROW:
                     this.x +=4;
                     break;
-               case 'l':
+               case 32:
                    if(this.velDisparo > 30) {
                         const newBala = new BalaMinJ5(this.x,this.y)
                         this.cargador.push(newBala);
@@ -42,14 +37,7 @@ class MinJ5{
                     break;
             }
         }
-
-
     }
-
-    
-
-    
-
     sumarVelDisparo() {
         this.velDisparo++;
     }
