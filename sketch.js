@@ -70,6 +70,10 @@ let cor3 = false;
 
 //MINIJUEGOS
 let minJ1;
+let coche = [];
+let posicionX;
+let posicionY;
+let ganar;
 
 let minJ2;
 
@@ -83,6 +87,22 @@ let mapaMinij3;
 let minJ4;
 
 let minJ5;
+let bala;
+let MJ5;
+let CS;
+let CS1;
+let CS2;
+let CS3;
+let CS4;
+let CS5;
+let CS6;
+let CS7;
+let cabezaS;
+
+let arriba = false;
+let abajo = false;
+let derecha = false;
+let izquierda = false;
 
 let pantalla;
 
@@ -126,6 +146,9 @@ function preload() {
   perdiste = loadImage('recursos/GAME OVER.png');
 
   vidas = loadImage('recursos/Corazón.png');
+
+  minJ1 = loadImage('recursos/MINIJUEGO1.png');
+  car = loadImage('recursos/CARRO.png');
   minJ2 = loadImage('recursos/MINIJUEGO2.png');
 
   minJ3 = loadImage('recursos/MINIJUEGO3.png');
@@ -134,6 +157,10 @@ function preload() {
 
   minJ4 = loadImage('recursos/MINIJUEGO4.png');
 
+  minJ5 = loadImage('recursos/MINIJUEGO5.png');
+
+  cabezaS = loadImage('recursos/scootercabeza.png')
+
   time = 120;
   lives = 3;
 }
@@ -141,7 +168,7 @@ function preload() {
 
 function setup() {
   createCanvas(1400, 700);
-  pantalla = 4;
+  pantalla = 0;
   levelA = new LevelA();
   taylor = new Tay(levelA.getMapReference());
   enemyK = new Kanye(levelA.getMapReference());
@@ -159,8 +186,28 @@ function setup() {
   enemyS = new Scooter(levelE.getMapReference5());
   mapaMinij3 = new MapaMj3();
   mer = new GataMer(mapaMinij3.getMapReferenceMj3());
+
+  bala = new BalaMinJ5();
+  
+  
+  
+
+
+  setupMJ1();
   
 }
+
+  MJ5 = new MinJ5();
+  CS = new CabezaScooter();
+  CS1 = new CabezaScooter(130,100);
+  CS2 = new CabezaScooter(280,100);
+  CS3 = new CabezaScooter(430,100);
+  CS4 = new CabezaScooter(580,100);
+  CS5 = new CabezaScooter(205,200);
+  CS6 = new CabezaScooter(355,200);
+  CS7 = new CabezaScooter(505,200);
+
+const CScooters = [CS1,CS2,CS3,CS4,CS5,CS6,CS7];
 
 function draw() {
   background(220);
@@ -259,9 +306,10 @@ function draw() {
     case 12:
       image(ganaste,0,0);
     break;
-
     case 13:
-     // image(minJ1,0,0);
+      image(minJ1,0,0);
+      drawMJ1();
+      
     break;
     case 14:
       image(minJ2,0,0);
@@ -274,10 +322,36 @@ function draw() {
       image(minJ4,0,0);
     break;
     case 17:
-      //image(minJ5,0,0);
+      image(minJ5,0,0);
+      MJ5.mostrarTanque();
+      MJ5.moverTanque();
+      MJ5.sumarVelDisparo();
+
+  CScooters.forEach(function(mar) {
+    
+    mar.mostrarCScooter();
+    
+    MJ5.getCargador().forEach(function(bala, index) {
+      if(mar.getVida() > 0 && validarDisparoScooter(mar, bala)) {
+        mar.setVida(0);
+        MJ5.getCargador().splice(index, 1);
+      }
+    });
+  });
+
+      
     break;
   }
 }
+
+function validarDisparoScooter(mar, bala) {
+  if(mar.getX()+30 < bala.getX() && mar.getX()+85 > bala.getX()
+  && mar.getY()-10 < bala.getY() && mar.getY()+90 > bala.getY()) {
+    return true;
+  }
+  return false;
+}
+
   function verifyEnemy() {
     switch (pantalla) {
       case 0:
@@ -741,6 +815,153 @@ function draw() {
     }
   }
 
+  function setupMJ1(){
+    frameRate(60);
+
+  ganar = false;
+
+  posicionX = 120;
+  posicionY = 340;
+
+  for (let i = 0; i < 4; i++) {
+
+
+    coche.push(new Array(3));
+
+
+    for (let j = 0; j < 3; j++) {
+
+      if (i === 0 || i === 2) {
+
+        coche[i][j] = new cocheMinJ1(240 + (100 * i), 50 + (200 * j), 2);
+
+      }
+      if (i === 1 || i === 3) {
+
+        coche[i][j] = new cocheMinJ1(240 + (100 * i), 800 - (200 * j), 1);
+
+
+      }
+    }
+  }
+  }
+
+  function drawMJ1() {
+  
+    if (ganar === false) {
+  
+  
+      pintarFondo();
+      for (let i = 0; i < 4; i++) {
+  
+        for (let j = 0; j < 3; j++) {
+  
+          coche[i][j].mostrar();
+        }
+      }
+  
+      personajeMJ1();
+  
+  
+    }
+    if (ganar === true) {
+      if (mouseIsPressed) {
+        ganar = false;
+      }
+  
+    }
+  }
+
+  function pintarFondo() {
+
+
+    /*fill(107,124,125);
+    rect(0,260, 80);
+  
+    fill(107,124,125);
+    rect(200, 50, 424, 600);*/
+    for (let i = 0; i < 3; i++) {
+      for (let j = 0; j < 7; j++) {
+        fill(255);
+  
+        rect(300 + (100 * i), 70 + (85 * j), 10, 40);
+  
+  
+      }
+  
+    }
+    rect(300 - 100, 50, 5, 590);
+    rect(300 + (100 * 3), 50, 5, 590);
+  }
+
+  function personajeMJ1() {
+
+    image(tay1,posicionX,posicionY,60,60);
+    /*if (arriba) {
+      posicionY -= 10;
+    }
+    if (abajo) {
+      posicionY += 10;
+    }
+  
+    if (izquierda) {
+      posicionX -= 10;
+    }
+    if (derecha) {
+      posicionX += 10;
+    }*/
+
+    if(keyIsPressed){
+    switch (key) {
+      case "w":
+      case "W":
+        posicionY -= 2;
+        break;
+      case "s":
+      case "S":
+        posicionY += 2;
+        break;
+  
+      case "a":
+      case "A":
+        posicionX -= 2;
+        break;
+      case "d":
+      case "D":
+        posicionX += 2;
+        break;
+  
+    }
+  }
+  
+    contactoMJ1();
+  
+    if (posicionX > 600) {
+        pantalla = 3;
+    }
+  }
+
+  function contactoMJ1() {
+    for (let i = 0; i < 4; i++) {
+      for (let j = 0; j < 3; j++) {
+  
+        if (posicionY  > coche[i][j].getRefCar() && posicionY < coche[i][j].getRefCar() + 40) {
+          if (posicionX  > 110 + (100 * i) && posicionX < 150 + (100 * i)) {
+  
+            posicionX = 120;
+            posicionY = 340;
+  
+          }
+        }
+      }
+    }
+  }
+
+
+  function mostrarMJ5() {
+    
+  }
+
   function mousePressed() {
     //seguir a instrucciones
     switch (pantalla) {
@@ -932,12 +1153,17 @@ function draw() {
       case 10:
         taylor5.mover();
         break;
+      case 13:
+        //minijuego1
+        break;
         //minijuego3
       case 15:
         mer.mover();
         break;
+        
   }
 }
+
 
 function pasarNivel(){
   switch (pantalla) {
@@ -978,6 +1204,15 @@ function pasarNivel(){
         && mer.pezAtrapado4 == true && mer.pezAtrapado5 == true){
         pantalla = 7;
       }
+      break;
+    case 17:
+      /*if(CScooters == ){
+
+        pantalla = 12;
+      }*/
+
+
+      
       break;
   }
 }
