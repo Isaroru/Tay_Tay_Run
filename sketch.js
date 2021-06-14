@@ -68,8 +68,20 @@ let cor1 = false;
 let cor2 = false;
 let cor3 = false;
 
-//boolean para matar enemigos
-let matarEnemigo = false;
+//MINIJUEGOS
+let minJ1;
+
+let minJ2;
+
+
+let minJ3;
+let gata;
+let pez;
+let mer;
+
+let minJ4;
+
+let minJ5;
 
 let pantalla;
 
@@ -113,6 +125,13 @@ function preload() {
   perdiste = loadImage('recursos/GAME OVER.png');
 
   vidas = loadImage('recursos/Corazón.png');
+  minJ2 = loadImage('recursos/MINIJUEGO2.png');
+
+  minJ3 = loadImage('recursos/MINIJUEGO3.png');
+  gata = loadImage('recursos/gata.png');
+  pez = loadImage('recursos/pez.png');
+
+  minJ4 = loadImage('recursos/MINIJUEGO4.png');
 
   time = 120;
   lives = 3;
@@ -121,7 +140,7 @@ function preload() {
 
 function setup() {
   createCanvas(1400, 700);
-  pantalla = 0;
+  pantalla = 15;
   levelA = new LevelA();
   taylor = new Tay(levelA.getMapReference());
   enemyK = new Kanye(levelA.getMapReference());
@@ -137,6 +156,7 @@ function setup() {
   levelE = new LevelE();
   taylor5 = new Tay5(levelE.getMapReference5());
   enemyS = new Scooter(levelE.getMapReference5());
+  mer = new GataMer();
   
 }
 
@@ -236,6 +256,23 @@ function draw() {
       // ganaste!!!
     case 12:
       image(ganaste,0,0);
+    break;
+
+    case 13:
+     // image(minJ1,0,0);
+    break;
+    case 14:
+      image(minJ2,0,0);
+    break;
+    case 15:
+      image(minJ3,0,0);
+      mer.mostrar();
+    break;
+    case 16:
+      image(minJ4,0,0);
+    break;
+    case 17:
+      //image(minJ5,0,0);
     break;
   }
 }
@@ -856,6 +893,17 @@ function draw() {
           taylor5.yPos = (taylor5.pjFil * 100);
         }
       break;
+
+      case 14:
+        if (dist(mouseX, mouseY, 450, 350) < 100) {
+          pantalla = 5;
+        }
+      break;
+      case 16:
+        if (dist(mouseX, mouseY, 250, 350) < 100) {
+          pantalla = 9;
+        }
+      break;
     }
   }
 
@@ -883,6 +931,11 @@ function draw() {
       case 10:
         taylor5.mover();
         break;
+        
+        //minijuego3
+      case 15:
+        mer.mover();
+        break;
   }
 }
 
@@ -893,31 +946,31 @@ function pasarNivel(){
     //nivel 1
     case 2:
       if(taylor.llaveAtrapada ==true && taylor.cdAtrapado==true){
-        pantalla = 3;
+        pantalla = 13;
       }
       break;
     //nivel 2
     case 4:
       if(taylor2.llaveAtrapada ==true && taylor2.avionAtrapado==true){
-        pantalla = 5;
+        pantalla = 14;
       }
       break;
       //nivel 3
     case 6:
       if(taylor3.llaveAtrapada ==true && taylor3.gatoAtrapado==true){
-        pantalla = 7;
+        pantalla = 15;
       }
       break;
       //nivel 4
     case 8:
       if(taylor4.llaveAtrapada ==true && taylor4.pajaroAtrapado==true){
-        pantalla = 9;
+        pantalla = 16;
       }
       break;
       //nivel 5
     case 10:
       if(taylor5.llaveAtrapada ==true && taylor5.cdAtrapado==true){
-        pantalla = 12;
+        pantalla = 17;
       }
       break;
   }
